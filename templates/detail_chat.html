@@ -1,0 +1,429 @@
+{% extends 'base.html' %}
+{% block content %}
+    {% load static %}
+    <div class="relative min-h-screen group-data-[sidebar-size=sm]:min-h-[1500px] overflow-y-hidden">
+
+        <div class="group-data-[sidebar-size=lg]:ltr:lg:ml-vertical-menu group-data-[sidebar-size=lg]:rtl:lg:mr-vertical-menu group-data-[sidebar-size=md]:ltr:ml-vertical-menu-md group-data-[sidebar-size=md]:rtl:mr-vertical-menu-md group-data-[sidebar-size=sm]:ltr:lg:ml-vertical-menu-sm group-data-[sidebar-size=sm]:lg:rtl:mr-vertical-menu-sm pt-[calc(theme('spacing.header')_*_1)] pb-[calc(theme('spacing.header')_*_1)] px-6 group-data-[layout=horizontal]:!mx-auto group-data-[layout=horizontal]:max-w-screen-2xl  group-data-[layout=horizontal]:lg:pt-[calc(theme('spacing.header')_*_1.75)] h-screen">
+            <div class="container-fluid">
+
+                <div class="md:flex items-center justify-between pt-6 pb-5">
+                    <div>
+                        <h6 class="mb-0 text-16 uppercase font-semibold dark:text-white">Chat</h6>
+                    </div>
+                    <div class="shrink-0">
+                        <ul class="mb-0 flex items-center gap-4 text-[13px] mt-2 md:mt-0">
+                            <li class="before:content-['/'] before:absolute ltr:before:-right-1 rtl:before:-left-2 before:text-gray-600 before:text-[9px] before:top-0 before:bottom-0 before:flex before:items-center relative pr-3 inline-block">
+                                <a href="#!" class="text-gray-800 dark:text-white">Agribusiness</a></li>
+                            <li class="text-gray-600 dark:text-zink-200">Chat</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="">
+                    <div class="w-full mt-5 mb-4 lg:mt-0">
+                        <div class="mb-0 card dark:bg-zink-700 shadow-gray-400/10">
+                            <div class="p-6 border-b border-gray-300 dark:border-zink-50">
+                                <div class="grid items-center grid-cols-12">
+                                    <div class="col-span-6">
+                                        <div class="text-13">
+                                            <img src="{{ friend.profile.pic }}" width="50px" height="50px" border="20px">
+                                            <a href="#" class="font-medium text-15 text-gray-700 dark:text-white">{{ friend.profile.name }}</a>
+                                            <p class="mt-1 mb-0 text-13 text-gray-600  truncate flex items-center dark:text-zink-200">
+                                                <span class="h-2.5 w-2.5 ltr:mr-1 rtl:ml-1 bg-green-500 block rounded-full"></span>Active
+                                                Now</p>
+                                        </div>
+                                    </div>
+                                    <div class="col-span-6 justify-self-end">
+                                        <ul class="flex space-x-3 rtl:space-x-reverse">
+                                            <li>
+                                                <div class="relative dropdown">
+                                                    <button class="p-0 w-10 h-10 rounded-full flex justify-center items-center bg-gray-50 text-gray-600 border-0 dark:bg-zink-50 dark:text-zink-200 btn dropdown-toggle"
+                                                            type="button" data-bs-toggle="dropdown"
+                                                            id="dropdownMenuButton1" data-bs-toggle="dropdown">
+                                                        <i class="bx bx-search-alt-2 text-15 font-medium"></i>
+                                                    </button>
+                                                    <div class="absolute left-0 right-auto top-auto hidden py-2 text-left list-none bg-white border border-gray-300 dark:border-zink-50 rounded  dropdown-menu dark:bg-zink-700 bg-clip-padding z-50"
+                                                         aria-labelledby="dropdownMenuButton1">
+                                                        <form action="" class=" w-60 p-4">
+                                                            <div class="flex rounded overflow-hidden border border-gray-400 dark:border-transparent">
+                                                                <input class="p-3 w-full placeholder:text-gray-600 dark:outline-none  dark:text-zink-200 dark:placeholder:text-zink-200 dark:bg-zink-50 py-2  placeholder:text-[13px] focus:border focus:border-none focus:ring-0 focus:outline-none text-gray-700"
+                                                                       type="search" placeholder="Search..."
+                                                                       id="example-search-input">
+
+                                                                <i class="mdi mdi-magnify flex justify-center items-center text-white px-3 bg-blue-500"></i>
+                                                            </div>
+                                                        </form>
+                                                    </div>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="relative dropdown">
+                                                    <button class="p-0 w-10 h-10 rounded-full flex justify-center items-center bg-gray-50 text-gray-600 border-0 dark:bg-zink-50 dark:text-zink-200 btn dropdown-toggle"
+                                                            type="button" data-bs-toggle="dropdown"
+                                                            id="dropdownMenuButton2" data-bs-toggle="dropdown">
+                                                        <i class="text-lg bx bx-cog font-medium text-15"></i>
+                                                    </button>
+                                                    <ul class="absolute right-0 left-auto top-auto z-50 hidden w-40 py-1.5 text-left list-none bg-white border rounded border-gray-300 dark:border-zink-50 dropdown-menu bg-clip-padding dark:bg-zink-700  dark:text-zink-200"
+                                                        aria-labelledby="dropdownMenuButton1">
+                                                        <li>
+                                                            <a class="block w-full px-6 py-1.5 text-13 font-normal text-gray-700 bg-transparent dropdown-item whitespace-nowrap hover:bg-gray-50  dark:text-zink-200 dark:hover:bg-zink-50 dark:hover:text-white"
+                                                               href="#">View Profile</a>
+                                                        </li>
+                                                        <li>
+                                                            <a class="block w-full px-6 py-1.5 text-13 font-normal text-gray-700 bg-transparent dropdown-item whitespace-nowrap hover:bg-gray-50  dark:text-zink-200 dark:hover:bg-zink-50 dark:hover:text-white"
+                                                               href="#">Clear chat</a>
+                                                        </li>
+                                                        <li>
+                                                            <a class="block w-full px-6 py-1.5 text-13 font-normal text-gray-700 bg-transparent dropdown-item whitespace-nowrap hover:bg-gray-50  dark:text-zink-200 dark:hover:bg-zink-50 dark:hover:text-white"
+                                                               href="#">Muted</a>
+                                                        </li>
+                                                        <li>
+                                                            <a class="block w-full px-6 py-1.5 text-13 font-normal text-gray-700 bg-transparent dropdown-item whitespace-nowrap hover:bg-gray-50  dark:text-zink-200 dark:hover:bg-zink-50 dark:hover:text-white"
+                                                               href="#">Delete</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </li>
+                                            <li>
+                                                <div class="relative dropdown">
+                                                    <button class="p-0 w-10 h-10 rounded-full flex justify-center items-center bg-gray-50 text-gray-600 border-0 dark:bg-zink-50 dark:text-zink-200 btn dropdown-toggle"
+                                                            type="button" data-bs-toggle="dropdown"
+                                                            id="dropdownMenuButton1" data-bs-toggle="dropdown">
+                                                        <i class="text-13 font-medium bx bx-dots-horizontal-rounded"></i>
+                                                    </button>
+                                                    <ul class="absolute right-0 left-auto top-auto z-50 hidden w-40 py-1.5 text-left list-none bg-white border rounded border-gray-300 dropdown-menu bg-clip-padding dark:bg-zink-700 dark:border-zink-50 dark:text-zink-200"
+                                                        aria-labelledby="dropdownMenuButton1">
+                                                        <li>
+                                                            <a class="block w-full px-6 py-1.5 text-13 font-normal text-gray-700 bg-transparent dropdown-item whitespace-nowrap hover:bg-gray-50  dark:text-zink-200 dark:hover:bg-zink-50 dark:hover:text-white"
+                                                               href="#">Action</a>
+                                                        </li>
+                                                        <li>
+                                                            <a class="block w-full px-6 py-1.5 text-13 font-normal text-gray-700 bg-transparent dropdown-item whitespace-nowrap hover:bg-gray-50  dark:text-zink-200 dark:hover:bg-zink-50 dark:hover:text-white"
+                                                               href="#">Another Action</a>
+                                                        </li>
+                                                        <li>
+                                                            <a class="block w-full px-6 py-1.5 text-13 font-normal text-gray-700 bg-transparent dropdown-item whitespace-nowrap hover:bg-gray-50  dark:text-zink-200 dark:hover:bg-zink-50 dark:hover:text-white"
+                                                               href="#">Something else</a>
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <ul class="max-h-[calc(100vh_-_380px)] py-4 px-2" data-simplebar="">
+                                <li class="relative mb-6 text-center chat-day-title">
+                                    <span class="relative z-30 px-6 py-1.5 text-gray-700 bg-white rounded-full title dark:text-white dark:bg-zink-700">Today</span>
+                                    <div class="absolute w-full border-b top-3 border-gray-300 dark:border-zink-50"></div>
+                                </li>
+                                <ul>
+                                    <li class="flex mb-5 ml-5">
+                                        <div class="inline-block px-5 py-3 rounded-lg bg-blue-50 dark:bg-blue-500/10">
+                                            <h5 class="text-13 mb-1"><a href="#"
+                                                                        class="mr-2 text-blue-500 font-semibold">Steven
+                                                Franklin</a></h5>
+                                            <p class="mb-0 text-gray-700 mt-0.5 text-13 dark:text-zink-200">Hello!</p>
+                                            <p class="text-[12px] text-gray-600 dark:text-zink-200 mt-4"><i
+                                                    class="bx bx-time-five align-middle me-1"></i> 10:00</p>
+                                        </div>
+                                        <div>
+                                            <div class="relative dropdown">
+                                                <button class="p-0 text-gray-600 border-0 btn dropdown-toggle"
+                                                        type="button" data-bs-toggle="dropdown"
+                                                        id="dropdownMenuButton1">
+                                                    <i class="text-xl bx bx-dots-vertical-rounded"></i>
+                                                </button>
+                                                <ul class="absolute right-0 left-auto top-auto z-50 hidden w-40 py-1.5 text-left list-none bg-white border border-gray-300 rounded dropdown-menu bg-clip-padding dark:bg-zink-700 dark:border-zink-50 dark:text-zink-200"
+                                                    aria-labelledby="dropdownMenuButton1">
+                                                    <li>
+                                                        <a class="block w-full px-4 py-1.5 text-sm font-normal text-gray-700 bg-transparent dropdown-item whitespace-nowrap hover:bg-gray-50  dark:text-zink-200 dark:hover:bg-zink-50 dark:hover:text-white !text-13"
+                                                           href="#">Copy</a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="block w-full px-4 py-1.5 text-sm font-normal text-gray-700 bg-transparent dropdown-item whitespace-nowrap hover:bg-gray-50  dark:text-zink-200 dark:hover:bg-zink-50 dark:hover:text-white !text-13"
+                                                           href="#">Save</a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="block w-full px-4 py-1.5 text-sm font-normal text-gray-700 bg-transparent dropdown-item whitespace-nowrap hover:bg-gray-50  dark:text-zink-200 dark:hover:bg-zink-50 dark:hover:text-white !text-13"
+                                                           href="#">Forward</a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="block w-full px-4 py-1.5 text-sm font-normal text-gray-700 bg-transparent dropdown-item whitespace-nowrap hover:bg-gray-50  dark:text-zink-200 dark:hover:bg-zink-50 dark:hover:text-white !text-13"
+                                                           href="#">Delete</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="flex justify-end mb-5 mr-5">
+                                        <div>
+                                            <div class="relative dropdown">
+                                                <button class="p-0 text-gray-600 border-0 btn dropdown-toggle"
+                                                        type="button" data-bs-toggle="dropdown"
+                                                        id="dropdownMenuButton1">
+                                                    <i class="text-xl bx bx-dots-vertical-rounded"></i>
+                                                </button>
+                                                <ul class="absolute right-0 left-auto top-auto z-50 hidden w-40 py-1.5 text-left list-none bg-white border bborder-gray-300 rounded dropdown-menu bg-clip-padding dark:bg-zink-700 dark:border-zink-50 dark:text-zink-200"
+                                                    aria-labelledby="dropdownMenuButton1">
+                                                    <li>
+                                                        <a class="block w-full px-4 py-1.5 text-sm font-normal text-gray-700 bg-transparent dropdown-item whitespace-nowrap hover:bg-gray-50  dark:text-zink-200 dark:hover:bg-zink-50 dark:hover:text-white !text-13"
+                                                           href="#">Copy</a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="block w-full px-4 py-1.5 text-sm font-normal text-gray-700 bg-transparent dropdown-item whitespace-nowrap hover:bg-gray-50  dark:text-zink-200 dark:hover:bg-zink-50 dark:hover:text-white !text-13"
+                                                           href="#">Save</a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="block w-full px-4 py-1.5 text-sm font-normal text-gray-700 bg-transparent dropdown-item whitespace-nowrap hover:bg-gray-50  dark:text-zink-200 dark:hover:bg-zink-50 dark:hover:text-white !text-13"
+                                                           href="#">Forward</a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="block w-full px-4 py-1.5 text-sm font-normal text-gray-700 bg-transparent dropdown-item whitespace-nowrap hover:bg-gray-50  dark:text-zink-200 dark:hover:bg-zink-50 dark:hover:text-white !text-13"
+                                                           href="#">Delete</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+
+                                        <div class="inline-block px-5 py-3 rounded-lg bg-gray-50 dark:bg-zink-50 text-end">
+                                            <h5 class="text-13 mb-1"><a href="#"
+                                                                        class="mr-2 text-blue-500 font-semibold">Henry
+                                                Wells</a></h5>
+                                            <p class="mb-0 text-gray-700 mt-0.5 text-13 dark:text-zink-200">Hi, How are
+                                                you? What about our next meeting?</p>
+                                            <p class="text-[12px] text-gray-600 dark:text-zink-200 mt-4"><i
+                                                    class="bx bx-time-five align-middle me-1"></i> 10:12</p>
+
+                                        </div>
+                                    </li>
+
+                                    <li class="flex mb-5 ml-5">
+                                        <div class="inline-block px-5 py-3 rounded-lg bg-blue-50 dark:bg-blue-500/10">
+                                            <h5 class="text-13 mb-1"><a href="#"
+                                                                        class="mr-2 text-blue-500 font-semibold">Steven
+                                                Franklin</a></h5>
+                                            <p class="mb-0 text-gray-700 mt-0.5 text-13 dark:text-zink-200"> Yeah
+                                                everything is fine.</p>
+                                            <p class="text-[12px] text-gray-600 dark:text-zink-200 mt-4"><i
+                                                    class="bx bx-time-five align-middle me-1"></i> 10:16</p>
+                                        </div>
+                                        <div>
+                                            <div class="relative dropdown">
+                                                <button class="p-0 text-gray-600 border-0 btn dropdown-toggle"
+                                                        type="button" data-bs-toggle="dropdown"
+                                                        id="dropdownMenuButton1">
+                                                    <i class="text-xl bx bx-dots-vertical-rounded"></i>
+                                                </button>
+                                                <ul class="absolute right-0 left-auto top-auto z-50 hidden w-40 py-1.5 text-left list-none bg-white border border-gray-300 rounded dropdown-menu bg-clip-padding dark:bg-zink-700 dark:border-zink-50 dark:text-zink-200"
+                                                    aria-labelledby="dropdownMenuButton1">
+                                                    <li>
+                                                        <a class="block w-full px-4 py-1.5 text-sm font-normal text-gray-700 bg-transparent dropdown-item whitespace-nowrap hover:bg-gray-50  dark:text-zink-200 dark:hover:bg-zink-50 dark:hover:text-white !text-13"
+                                                           href="#">Copy</a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="block w-full px-4 py-1.5 text-sm font-normal text-gray-700 bg-transparent dropdown-item whitespace-nowrap hover:bg-gray-50  dark:text-zink-200 dark:hover:bg-zink-50 dark:hover:text-white !text-13"
+                                                           href="#">Save</a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="block w-full px-4 py-1.5 text-sm font-normal text-gray-700 bg-transparent dropdown-item whitespace-nowrap hover:bg-gray-50  dark:text-zink-200 dark:hover:bg-zink-50 dark:hover:text-white !text-13"
+                                                           href="#">Forward</a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="block w-full px-4 py-1.5 text-sm font-normal text-gray-700 bg-transparent dropdown-item whitespace-nowrap hover:bg-gray-50  dark:text-zink-200 dark:hover:bg-zink-50 dark:hover:text-white !text-13"
+                                                           href="#">Delete</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="flex mb-5 ml-5">
+                                        <div class="inline-block px-5 py-3 rounded-lg bg-blue-50 dark:bg-blue-500/10">
+                                            <h5 class="text-13 mb-1"><a href="#"
+                                                                        class="mr-2 text-blue-500 font-semibold">Steven
+                                                Franklin</a></h5>
+                                            <p class="mb-0 text-gray-700 mt-0.5 text-13 dark:text-zink-200"> & Next
+                                                meeting tomorrow 10.00AM.</p>
+                                            <p class="text-[12px] text-gray-600 dark:text-zink-200 mt-4"><i
+                                                    class="bx bx-time-five align-middle me-1"></i> 10:16</p>
+                                        </div>
+                                        <div>
+                                            <div class="relative dropdown">
+                                                <button class="p-0 text-gray-600 border-0 btn dropdown-toggle"
+                                                        type="button" data-bs-toggle="dropdown"
+                                                        id="dropdownMenuButton1">
+                                                    <i class="text-xl bx bx-dots-vertical-rounded"></i>
+                                                </button>
+                                                <ul class="absolute right-0 left-auto top-auto z-50 hidden w-40 py-1.5 text-left list-none bg-white border border-gray-300 rounded dropdown-menu bg-clip-padding dark:bg-zink-700 dark:border-zink-50 dark:text-zink-200"
+                                                    aria-labelledby="dropdownMenuButton1">
+                                                    <li>
+                                                        <a class="block w-full px-4 py-1.5 text-sm font-normal text-gray-700 bg-transparent dropdown-item whitespace-nowrap hover:bg-gray-50  dark:text-zink-200 dark:hover:bg-zink-50 dark:hover:text-white !text-13"
+                                                           href="#">Copy</a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="block w-full px-4 py-1.5 text-sm font-normal text-gray-700 bg-transparent dropdown-item whitespace-nowrap hover:bg-gray-50  dark:text-zink-200 dark:hover:bg-zink-50 dark:hover:text-white !text-13"
+                                                           href="#">Save</a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="block w-full px-4 py-1.5 text-sm font-normal text-gray-700 bg-transparent dropdown-item whitespace-nowrap hover:bg-gray-50  dark:text-zink-200 dark:hover:bg-zink-50 dark:hover:text-white !text-13"
+                                                           href="#">Forward</a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="block w-full px-4 py-1.5 text-sm font-normal text-gray-700 bg-transparent dropdown-item whitespace-nowrap hover:bg-gray-50  dark:text-zink-200 dark:hover:bg-zink-50 dark:hover:text-white !text-13"
+                                                           href="#">Delete</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="flex justify-end mb-5 mr-5">
+                                        <div>
+                                            <div class="relative dropdown">
+                                                <button class="p-0 text-gray-600 border-0 btn dropdown-toggle"
+                                                        type="button" data-bs-toggle="dropdown"
+                                                        id="dropdownMenuButton1">
+                                                    <i class="text-xl bx bx-dots-vertical-rounded"></i>
+                                                </button>
+                                                <ul class="absolute right-0 left-auto top-auto z-50 hidden w-40 py-1.5 text-left list-none bg-white border-gray-300 roundedropdown-menu bg-clip-padding dark:bg-zink-700 dark:border-zink-50 dark:text-zink-200"
+                                                    aria-labelledby="dropdownMenuButton1">
+                                                    <li>
+                                                        <a class="block w-full px-4 py-1.5 text-sm font-normal text-gray-700 bg-transparent dropdown-item whitespace-nowrap hover:bg-gray-50  dark:text-zink-200 dark:hover:bg-zink-50 dark:hover:text-white !text-13"
+                                                           href="#">Copy</a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="block w-full px-4 py-1.5 text-sm font-normal text-gray-700 bg-transparent dropdown-item whitespace-nowrap hover:bg-gray-50  dark:text-zink-200 dark:hover:bg-zink-50 dark:hover:text-white !text-13"
+                                                           href="#">Save</a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="block w-full px-4 py-1.5 text-sm font-normal text-gray-700 bg-transparent dropdown-item whitespace-nowrap hover:bg-gray-50  dark:text-zink-200 dark:hover:bg-zink-50 dark:hover:text-white !text-13"
+                                                           href="#">Forward</a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="block w-full px-4 py-1.5 text-sm font-normal text-gray-700 bg-transparent dropdown-item whitespace-nowrap hover:bg-gray-50  dark:text-zink-200 dark:hover:bg-zink-50 dark:hover:text-white !text-13"
+                                                           href="#">Delete</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+
+                                        <div class="inline-block px-5 py-3 rounded-lg bg-gray-50 dark:bg-zink-50 text-end">
+                                            <h5 class="text-13 mb-1"><a href="#"
+                                                                        class="mr-2 text-blue-500 font-semibold">Henry
+                                                Wells</a></h5>
+                                            <p class="mb-0 text-gray-700 mt-0.5 text-13 dark:text-zink-200">Wow that's
+                                                great</p>
+                                            <p class="text-[12px] text-gray-600 dark:text-zink-200 mt-4"><i
+                                                    class="bx bx-time-five align-middle me-1"></i> 10:07</p>
+
+                                        </div>
+                                    </li>
+                                    <li class="flex mb-5 ml-5">
+                                        <div class="inline-block px-5 py-3 rounded-lg bg-blue-50 dark:bg-blue-500/10">
+                                            <h5 class="text-13 mb-1"><a href="#"
+                                                                        class="mr-2 text-blue-500 font-semibold">Steven
+                                                Franklin</a></h5>
+                                            <p class="mb-0 text-gray-700 mt-0.5 text-13 dark:text-zink-200"> hello &
+                                                Next meeting tomorrow 10.00AM.</p>
+                                            <p class="text-[12px] text-gray-600 dark:text-zink-200 mt-4"><i
+                                                    class="bx bx-time-five align-middle me-1"></i> 12:16</p>
+                                        </div>
+
+                                        <div>
+                                            <div class="relative dropdown">
+                                                <button class="p-0 text-gray-600 border-0 btn dropdown-toggle"
+                                                        type="button" data-bs-toggle="dropdown"
+                                                        id="dropdownMenuButton1">
+                                                    <i class="text-xl bx bx-dots-vertical-rounded"></i>
+                                                </button>
+                                                <ul class="absolute right-0 left-auto top-auto z-50 hidden w-40 py-1.5 text-left list-none bg-white border border-gray-300 rounded dropdown-menu bg-clip-padding dark:bg-zink-700 dark:border-zink-50 dark:text-zink-200"
+                                                    aria-labelledby="dropdownMenuButton1">
+                                                    <li>
+                                                        <a class="block w-full px-4 py-1.5 text-sm font-normal text-gray-700 bg-transparent dropdown-item whitespace-nowrap hover:bg-gray-50  dark:text-zink-200 dark:hover:bg-zink-50 dark:hover:text-white !text-13"
+                                                           href="#">Copy</a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="block w-full px-4 py-1.5 text-sm font-normal text-gray-700 bg-transparent dropdown-item whitespace-nowrap hover:bg-gray-50  dark:text-zink-200 dark:hover:bg-zink-50 dark:hover:text-white !text-13"
+                                                           href="#">Save</a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="block w-full px-4 py-1.5 text-sm font-normal text-gray-700 bg-transparent dropdown-item whitespace-nowrap hover:bg-gray-50  dark:text-zink-200 dark:hover:bg-zink-50 dark:hover:text-white !text-13"
+                                                           href="#">Forward</a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="block w-full px-4 py-1.5 text-sm font-normal text-gray-700 bg-transparent dropdown-item whitespace-nowrap hover:bg-gray-50  dark:text-zink-200 dark:hover:bg-zink-50 dark:hover:text-white !text-13"
+                                                           href="#">Delete</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </li>
+                                    <li class="flex justify-end mb-5 mr-5">
+                                        <div>
+                                            <div class="relative dropdown">
+                                                <button class="p-0 text-gray-600 border-0 btn dropdown-toggle"
+                                                        type="button" data-bs-toggle="dropdown"
+                                                        id="dropdownMenuButton1">
+                                                    <i class="text-xl bx bx-dots-vertical-rounded"></i>
+                                                </button>
+                                                <ul class="absolute right-0 left-auto top-auto z-50 hidden w-40 py-1.5 text-left list-none bg-white border border-gray-300 rounded dropdown-menu bg-clip-padding dark:bg-zink-700 dark:border-zink-50 dark:text-zink-200"
+                                                    aria-labelledby="dropdownMenuButton1">
+                                                    <li>
+                                                        <a class="block w-full px-4 py-1.5 text-sm font-normal text-gray-700 bg-transparent dropdown-item whitespace-nowrap hover:bg-gray-50  dark:text-zink-200 dark:hover:bg-zink-50 dark:hover:text-white !text-13"
+                                                           href="#">Copy</a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="block w-full px-4 py-1.5 text-sm font-normal text-gray-700 bg-transparent dropdown-item whitespace-nowrap hover:bg-gray-50  dark:text-zink-200 dark:hover:bg-zink-50 dark:hover:text-white !text-13"
+                                                           href="#">Save</a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="block w-full px-4 py-1.5 text-sm font-normal text-gray-700 bg-transparent dropdown-item whitespace-nowrap hover:bg-gray-50  dark:text-zink-200 dark:hover:bg-zink-50 dark:hover:text-white !text-13"
+                                                           href="#">Forward</a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="block w-full px-4 py-1.5 text-sm font-normal text-gray-700 bg-transparent dropdown-item whitespace-nowrap hover:bg-gray-50  dark:text-zink-200 dark:hover:bg-zink-50 dark:hover:text-white !text-13"
+                                                           href="#">Delete</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+
+                                        <div class="inline-block px-5 py-3 rounded-lg bg-gray-50 dark:bg-zink-50 text-end">
+                                            <h5 class="text-13 mb-1"><a href="#"
+                                                                        class="mr-2 text-blue-500 font-semibold">Henry
+                                                Wells</a></h5>
+                                            <p class="mb-0 text-gray-700 mt-0.5 text-13 dark:text-zink-200">Wow that's
+                                                great</p>
+                                            <p class="text-[12px] text-gray-600 dark:text-zink-200 mt-4"><i
+                                                    class="bx bx-time-five align-middle me-1"></i> 10:07</p>
+                                        </div>
+                                    </li>
+                                </ul>
+                            </ul>
+                            <div class="p-3 border-t border-gray-300 dark:border-zink-50 relative">
+                                <div class="flex gap-x-6 flex-warp">
+                                    <div class="grow relative">
+                                        <input type="text"
+                                               class=" rounded-full  border-gray-300 w-full bg-[#eff2f7] placeholder:text-13 placeholder:text-gray-600 focus:outline-none py-2 ltr:pr-28 rtl:pl-28 px-4 dark:bg-transparent dark:bg-zink-50"
+                                               placeholder="Enter Message...">
+                                        <div class="flex gap-x-4  text-blue-500 text-16 absolute top-2 ltr:right-5 rtl:left-5">
+                                            <a href="#!"><i class="mdi mdi-emoticon-happy-outline"></i></a>
+                                            <a href="#!"><i class="mdi mdi-file-image-outline"></i></a>
+                                            <a href="#!"><i class="mdi mdi-file-document-outline"></i></a>
+                                        </div>
+                                    </div>
+                                    <div class="inline-block flex-shrink-0">
+                                        <button type="submit"
+                                                class="text-white rounded-full  bg-blue-500 border-transparent btn shadow-blue-200 focus:ring focus:ring-blue-200 px-5 flex">
+                                            <span class="ltr:lg:mr-2 rtl:lg:ml-2 d-none d-sm-inline-block hidden lg:block">Send</span>
+                                            <i class="ltr:lg:ml-2 rtl:lg-mr-2 mdi mdi-send float-end"></i>
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- container-fluid -->
+        </div>
+    </div>
+{% endblock %}

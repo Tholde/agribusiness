@@ -1,0 +1,162 @@
+﻿{% extends 'admin/base.html' %}
+{% block content %}
+    {% load static %}
+    <div class="relative min-h-screen group-data-[sidebar-size=sm]:min-h-[1500px]">
+
+        <div class="group-data-[sidebar-size=lg]:ltr:lg:ml-vertical-menu group-data-[sidebar-size=lg]:rtl:lg:mr-vertical-menu group-data-[sidebar-size=md]:ltr:ml-vertical-menu-md group-data-[sidebar-size=md]:rtl:mr-vertical-menu-md group-data-[sidebar-size=sm]:ltr:lg:ml-vertical-menu-sm group-data-[sidebar-size=sm]:lg:rtl:mr-vertical-menu-sm pt-[calc(theme('spacing.header')_*_1)] pb-[calc(theme('spacing.header')_*_1)] px-6 group-data-[layout=horizontal]:!mx-auto group-data-[layout=horizontal]:max-w-screen-2xl  group-data-[layout=horizontal]:lg:pt-[calc(theme('spacing.header')_*_1.75)] ">
+            <div class="container-fluid">
+
+                <div class="md:flex items-center justify-between pt-6 pb-5">
+                    <div>
+                        <h6 class="mb-0 text-16 uppercase font-semibold dark:text-white">Admin</h6>
+                    </div>
+                    <div class="shrink-0">
+                        <ul class="mb-0 flex items-center gap-4 text-[13px] mt-2 md:mt-0">
+                            <li class="before:content-['/'] before:absolute ltr:before:-right-1 rtl:before:-left-2 before:text-gray-600 before:text-[9px] before:top-0 before:bottom-0 before:flex before:items-center relative pr-3 inline-block">
+                                <a href="#!" class="text-gray-800 dark:text-white">Dashboard</a></li>
+                            <li class="text-gray-600 dark:text-zink-200">Admin</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="grid grid-cols-12 gap-x-6">
+                    <div class="col-span-12 2xl:col-span-8">
+                        <div class="grid grid-col-2 md:grid-cols-2 lg:grid-cols-3 gap-x-6">
+                            <div class="card dark:bg-zink-700">
+                                <div class="card-body">
+                                    <div class="flex justify-between">
+                                        <div>
+                                            <p class="text-13 font-normal text-gray-600 dark:text-zink-200">Total des
+                                                utilisateurs</p>
+                                            <h4 class="text-16 font-medium mt-2 leading-5">{{ users|length }}</h4>
+                                        </div>
+
+                                        <div class="w-12 h-12 bg-green-50 rounded-full flex justify-center items-center  dark:bg-zink-50">
+                                            <i class="bx bxs-user text-[20px] text-green-500"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card dark:bg-zink-700">
+                                <div class="card-body">
+                                    <div class="flex justify-between">
+                                        <div>
+                                            <p class="text-13 font-normal text-gray-600 dark:text-zink-200">
+                                               Total des Techniciens</p>
+                                            <h4 class="text-16 font-medium mt-2 leading-5">{{ techniciens|length }}</h4>
+                                        </div>
+                                        <div class="w-12 h-12 bg-green-50 rounded-full flex justify-center items-center  dark:bg-zink-50">
+                                            <i class="bx bxs-note text-[20px] text-green-500"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="card dark:bg-zink-700">
+                                <div class="card-body">
+                                    <div class="flex justify-between">
+                                        <div>
+                                            <p class="text-13 font-normal text-gray-600 dark:text-zink-200">
+                                                Messages des visiteurs </p>
+                                            <h4 class="text-16 font-medium mt-2 leading-5">{{ visitor|length }}</h4>
+                                        </div>
+                                        <div class="w-12 h-12 bg-green-50 rounded-full flex justify-center items-center  dark:bg-zink-50">
+                                            <i class="bx bxs-message-square-dots text-[20px] text-green-500"></i>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="card dark:bg-zink-700">
+                                <div class="card-body ">
+                                    <div class="flex justify-between items-center">
+                                        <h5 class="mb-2 text-gray-700 text-15 font-semibold dark:text-gray-50">
+                                            Visiteurs</h5>
+                                    </div>
+                                    <hr class="mt-4 mb-6 border-gray-400/30 dark:border-zink-50">
+                                    <div class="apex-charts w-full" data-colors='["#5b73e8", "#f1b44c"]'
+                                         id="area-chart" dir="ltr"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-span-12 2xl:col-span-4">
+                        <div class="card dark:bg-zink-700 overflow-hidden">
+                            <div class="card-body">
+                                <div class="flex gap-x-4">
+                                    <div class="flex-shrink-0">
+                                        <img src="{{ admin.image.url }}" alt=""
+                                             class="w-12 h-12 border p-1 border-gray-500/20 rounded-full dark:border-zink-50">
+                                    </div>
+                                    <div class="w-full">
+                                        <div class="flex justify-between">
+                                            <div>
+                                                <h6 class="mb-1 text-16 font-medium text-gray-600 dark:text-white leading-5">
+                                                    {{ admin.first_name }}&nbsp;{{ admin.last_name }}</h6>
+                                                <p class="text-gray-600 text-13 dark:text-zink-200">{{ admin.role.upper }}</p>
+                                            </div>
+                                            <div class="relative dropdown">
+                                                <button class="p-0 flex items-center dark:bg-zink-50 justify-center text-gray-800 px-2 py-1 text-[11px] bg-gray-50 border-0 btn dropdown-toggle  dark:text-zink-200 "
+                                                        type="button" data-bs-toggle="dropdown"
+                                                        id="dropdownMenuButton1" data-bs-toggle="dropdown"><i
+                                                        class="bx bxs-cog align-middle me-1"></i>
+                                                    Paramètre
+                                                </button>
+                                                <ul class="absolute right-0 left-auto top-auto z-50 hidden w-48 py-1.5 text-left list-none bg-white border border-transparent rounded shadow-4xl dropdown-menu bg-clip-padding dark:bg-zink-700 dark:border-zink-50 dark:text-zink-200"
+                                                    aria-labelledby="dropdownMenuButton1">
+                                                    <li>
+                                                        <a class="block w-full px-6 py-1.5 text-13 font-normal text-gray-700 bg-transparent dropdown-item whitespace-nowrap hover:bg-gray-50  dark:text-zink-200 dark:hover:bg-zink-50 dark:hover:text-white"
+                                                           href="{% url 'admin_profile' %}">Voir Profile</a>
+                                                    </li>
+                                                    <li>
+                                                        <a class="block w-full px-6 py-1.5 text-13 font-normal text-gray-700 bg-transparent dropdown-item whitespace-nowrap hover:bg-gray-50  dark:text-zink-200 dark:hover:bg-zink-50 dark:hover:text-white"
+                                                           href="{% url 'logout' %}">Déconnexion</a>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="card dark:bg-zink-700">
+                            <div class="card-body">
+                                <div class="flex justify-between">
+                                    <h5 class="mb-2 text-gray-700 text-15 font-semibold dark:text-gray-50">
+                                        Subscribes</h5>
+                                    <div class="relative dropdown">
+                                        <button class="p-0 text-gray-700 border-0 btn dropdown-toggle dark:text-zink-200 "
+                                                type="button" data-bs-toggle="dropdown" id="dropdownMenuButton1"
+                                                data-bs-toggle="dropdown">
+                                            <i class="mdi mdi-dots-horizontal font-medium text-15"></i>
+                                        </button>
+                                        <ul class="absolute right-0 left-auto top-auto z-50 hidden w-44 py-1.5 text-left list-none bg-white border border-transparent rounded shadow-4xl dropdown-menu bg-clip-padding dark:bg-zink-700 dark:border-zink-50 dark:text-zink-200"
+                                            aria-labelledby="dropdownMenuButton1">
+                                            <li>
+                                                <a class="block w-full px-6 py-1.5 text-13 font-normal text-gray-700 bg-transparent dropdown-item whitespace-nowrap hover:bg-gray-50  dark:text-zink-200 dark:hover:bg-zink-50 dark:hover:text-white"
+                                                   href="#">Voir les problemes</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                                <div class="flex justify-between items-end">
+                                    <div class="mt-1">
+                                        <p class="text-13 font-normal dark:text-zink-200">Total des problems</p>
+                                        <h4 class="text-xl font-medium">{{ problem|length}}</h4>
+                                    </div>
+                                    <div>
+                                        <i class="bx bx-group text-6xl text-gray-400/30 dark:text-zink-50"></i>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+            <!-- container-fluid -->
+        </div>
+        <!-- End Page-content -->
+        {% include 'admin/footer.html' %}
+    </div>
+
+{% endblock %}

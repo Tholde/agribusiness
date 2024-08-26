@@ -1,0 +1,112 @@
+{% extends 'technicien/base.html' %}
+{% block content %}
+    {% load static %}
+    <div class="relative min-h-screen group-data-[sidebar-size=sm]:min-h-[1500px]">
+
+        <div class="group-data-[sidebar-size=lg]:ltr:lg:ml-vertical-menu group-data-[sidebar-size=lg]:rtl:lg:mr-vertical-menu group-data-[sidebar-size=md]:ltr:ml-vertical-menu-md group-data-[sidebar-size=md]:rtl:mr-vertical-menu-md group-data-[sidebar-size=sm]:ltr:lg:ml-vertical-menu-sm group-data-[sidebar-size=sm]:lg:rtl:mr-vertical-menu-sm pt-[calc(theme('spacing.header')_*_1)] pb-[calc(theme('spacing.header')_*_1)] px-6 group-data-[layout=horizontal]:!mx-auto group-data-[layout=horizontal]:max-w-screen-2xl  group-data-[layout=horizontal]:lg:pt-[calc(theme('spacing.header')_*_1.75)] ">
+            <div class="container-fluid">
+
+                <div class="md:flex items-center justify-between pt-6 pb-5">
+                    <div>
+                        <h6 class="mb-0 text-16 uppercase font-semibold dark:text-white">Editer Produit</h6>
+                    </div>
+                    <div class="shrink-0">
+                        <ul class="mb-0 flex items-center gap-4 text-[13px] mt-2 md:mt-0">
+                            <li class="before:content-['/'] before:absolute ltr:before:-right-1 rtl:before:-left-2 before:text-gray-600 before:text-[9px] before:top-0 before:bottom-0 before:flex before:items-center relative pr-3 inline-block">
+                                <a href="" class="text-gray-800 dark:text-white">TECHNICIEN</a></li>
+                            <li class="text-gray-600 dark:text-zink-200">Editer Produit</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="grid grid-cols-12">
+                    <div class="col-span-12">
+                        <div class="card dark:bg-zink-700">
+                            <div class="card-body">
+                                <h3>Produit</h3>
+
+                                <div id="vertical-example" class="vertical-wizard dark:text-white">
+                                    <!-- Seller Details -->
+                                    <section>
+                                        <form method="post" action="{% url 'update_technicien' product.id %}">
+                                            {% csrf_token %}
+                                            <div class="grid grid-cols-12 gap-x-5">
+                                                <div class="col-span-12 md:col-span-6">
+                                                    <div class="mb-3">
+                                                        <label for="verticalnav-firstname-input"
+                                                               class="block font-medium text-13 text-gray-600 mb-2 dark:text-zink-200">Nom</label>
+                                                        <input type="text"
+                                                               class="dark:bg-transparent dark:border-zink-50 dark:placeholder:text-zink-200 w-full border py-2 px-3 placeholder:text-gray-600 rounded border-gray-400 placeholder:text-13 focus:border focus:border-gray-400 focus:ring-0 focus:outline-none text-gray-600 dark:text-zink-200 font-bold"
+                                                               id="verticalnav-firstname-input"
+                                                               value="{{ product.name }}" name="name"
+                                                               placeholder="Entrer le nom du produit">
+                                                    </div>
+                                                </div><!-- end grid -->
+                                                <div class="col-span-12 md:col-span-6">
+                                                    <div class="mb-3">
+                                                        <label for="verticalnav-lastname-input"
+                                                               class="block font-medium text-13 text-gray-600 mb-2 dark:text-zink-200">Prix</label>
+                                                        <input type="text"
+                                                               class="dark:bg-transparent dark:border-zink-50 dark:placeholder:text-zink-200 w-full border py-2 px-3 placeholder:text-gray-600 rounded border-gray-400 placeholder:text-13 focus:border focus:border-gray-400 focus:ring-0 focus:outline-none text-gray-600 dark:text-zink-200 font-bold"
+                                                               id="verticalnav-lastname-input"
+                                                               value="{{ product.price }}" name="price"
+                                                               placeholder="Entrer le prix du produit">
+                                                    </div>
+                                                </div><!-- end grid -->
+                                            </div><!-- end row -->
+
+                                            <div class="grid grid-cols-12 gap-x-5">
+                                                <div class="col-span-12 md:col-span-6">
+                                                    <div class="mb-3">
+                                                        <label for="verticalnav-phoneno-input"
+                                                               class="block font-medium text-13 text-gray-600 mb-2 dark:text-zink-200">Description</label>
+                                                        <input type="text"
+                                                               class="dark:bg-transparent dark:border-zink-50 dark:placeholder:text-zink-200 w-full border py-2 px-3 placeholder:text-gray-600 rounded border-gray-400 placeholder:text-13 focus:border focus:border-gray-400 focus:ring-0 focus:outline-none text-gray-600 dark:text-zink-200 font-bold"
+                                                               id="verticalnav-phoneno-input" name="description"
+                                                               value="{{ product.description }}"
+                                                               placeholder="Entrer le description du projet">
+                                                    </div>
+                                                </div><!-- end grid -->
+                                                <div class="col-span-12 md:col-span-6">
+                                                    <div class="mb-3">
+                                                        <label for="verticalnav-email-input"
+                                                               class="block font-medium text-13 text-gray-600 mb-2 dark:text-zink-200">Image</label>
+                                                        <input type="file" accept=".jpg, .jpeg, .png, .JPG, .PNG, .JPEG"
+                                                               class="dark:bg-transparent dark:border-zink-50 dark:placeholder:text-zink-200 w-full border py-2 px-3 placeholder:text-gray-600 rounded border-gray-400 placeholder:text-13 focus:border focus:border-gray-400 focus:ring-0 focus:outline-none text-gray-600 dark:text-zink-200 font-bold"
+                                                               id="verticalnav-email-input" name="image">
+                                                    </div>
+                                                </div><!-- end grid -->
+                                            </div><!-- end row -->
+                                            {% if messages %}
+                                                <div class="group flex items-center mb-4">
+                                                    <img src="{% static 'error.png' %}" class="h-6 mx-2 dark:hidden"
+                                                         alt="">
+                                                    <label class="block text-13 font-medium text-red-700 mb-2 dark:text-zink-200"
+                                                           for="userpassword">{{ messages }}</label>
+                                                </div>
+                                            {% endif %}
+                                            <div class="grid grid-cols-12 gap-x-5">
+                                                <div class="col-span-12">
+                                                    <div class="mb-3">
+                                                        <button type="submit"
+                                                                class="text-white transition-all duration-300 ease-linear w-full bg-green-500 border-green-500 hover:bg-green-600 hover:border-green-600 hover:text-white active:bg-green-600 active:border-green-600 active:text-white focus:bg-green-600 focus:border-green-600 focus:text-white focus:ring focus:ring-green-500/30 btn">
+                                                            Modifier le Produit
+                                                        </button>
+                                                    </div>
+                                                </div><!-- end grid -->
+                                            </div><!-- end row -->
+                                        </form>
+                                    </section>
+                                </div>
+                            </div>
+                        </div>
+                        <!-- end card -->
+                    </div>
+                    <!-- end col -->
+                </div>
+            </div>
+            <!-- container-fluid -->
+        </div>
+        <!-- End Page-content -->
+        {% include 'admin/footer.html' %}
+    </div>
+{% endblock %}

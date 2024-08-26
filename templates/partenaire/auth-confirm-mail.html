@@ -1,0 +1,38 @@
+﻿{% extends 'auth/base.html' %}
+{% load static %}
+{% block content %}
+<body class="font-poppins">
+<div class="flex items-center justify-center w-screen h-screen py-10 bg-gray-50  lg:py-0 overflow-x-hidden dark:bg-zink-800">
+    <div class="container">
+        <a href="{% url 'index' %}" class="block mb-10">
+            <img src="{% static 'asset/agribusiness.png' %}" alt="" width="150px" height="150px"
+                 class="block dark:hidden mx-auto">
+            <img src="{% static 'asset/agribusiness.png' %}" alt="" width="150px" height="150px"
+                 class="dark:block hidden mx-auto">
+        </a>
+
+        <div class="grid grid-cols-1 gap-5 mt-10 md:mx-14">
+            <div class="w-full md:w-[450px] mx-auto">
+                <div class="card lg:max-w-lg mx-auto p-5 dark:bg-zink-700">
+                    <div class="w-[72px] h-[72px] rounded-full flex justify-center mx-auto items-center p-3  bg-green-50 dark:bg-zink-50">
+                        <i class="bx bx-mail-send text-3xl text-green-500"></i>
+                    </div>
+                    <div class="m-4 text-center">
+                        <h5 class="dark:text-white p-2 text-center text-green-900 text-[20px]  " role="alert">
+                            Succès !
+                        </h5>
+                        <p class="dark:text-zink-200 text-13 text-gray-600 my-2">Merci d'avaoir incrire dans notre site. Ce site est en cours de developpement et cet page pas encore prete.</p>
+                        <a href="{% url 'logout' %}"
+                           class="px-3 text-13 mt-3 text-white bg-green-500 border-transparent hover:bg-green-600 btn"
+                           type="submit">Retourner à la page d'accueil</a>
+                    </div>
+                </div>
+                <div class="mt-10 text-13 text-center text-normal text-gray-800 dark:text-zink-200">
+                    {% include 'auth/footer.html' %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- end account-pages -->
+{% endblock %}

@@ -1,0 +1,228 @@
+﻿{% extends 'home/base.html' %}
+{% load static %}
+{% block content %}
+    <main>
+    <!--page-title-area start-->
+        <section class="page-title-area pos-rel"
+                 style="background-image: url({% static 'asset/img/bg/page-banner.jpg' %});">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-8 offset-xl-2">
+                        <div class="page-title text-center pt-180">
+                            <h2>Apropos</h2>
+                            <div class="breadcrumb-list text-center">
+                                <ul>
+                                    <li><a href="#">Accueil</a></li>
+                                    <li>Apropos de nous</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--page-title-area start-->
+        <!--what-we-do start-->
+        <section class="what-we-do grey-bg pt-120 pb-100">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-6 col-lg-7 offset-xl-3 offset-lg-2">
+                        <div class="section-title text-center mb-70">
+                            <span class="mb-15">Ce qu'on va faire</span>
+                            <h2 class="mb-30">Exlporer notre belle offre pour vous</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xl-4 col-lg-6 col-md-6">
+                        <div class="services services-three d-md-flex mb-30">
+                            <div class="services__icon__two mt-15 mr-35">
+                                <i class="far fa-leaf"></i>
+                            </div>
+                            <div class="services__content pr-10">
+                                <h5>Conseil</h5>
+                                <p>Conseil pour la Gestion d’Exploitation Agricole Familiale, pour aider les agriculteurs à exploiter leurs productions locales et pour conseiller la gestion de produits agricultures aux peuples</p>
+                                <a href="{% url 'login' %}">voir en plus <i class="fas fa-chevron-double-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-6 col-md-6">
+                        <div class="services services-three d-md-flex mb-30">
+                            <div class="services__icon__two mt-15 mr-35">
+                                <i class="far fa-shipping-timed"></i>
+                            </div>
+                            <div class="services__content pr-10">
+                                <h5>Transportations</h5>
+                                <p>S'il y a un clients besoin de livraison à domicile.</p>
+                                <a href="{% url 'login' %}">voir en plus <i class="fas fa-chevron-double-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-6 col-md-6">
+                        <div class="services services-three d-md-flex mb-30">
+                            <div class="services__icon__two mt-15 mr-35">
+                                <i class="far fa-shovel"></i>
+                            </div>
+                            <div class="services__content pr-10">
+                                <h5>Terrain</h5>
+                                <p>Formation sur terrain pour les paysans agriculteur membre dans une association</p>
+                                <a href="{% url 'login' %}">voir en plus <i class="fas fa-chevron-double-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-6 col-md-6">
+                        <div class="services services-three d-md-flex mb-30">
+                            <div class="services__icon__two mt-15 mr-35">
+                                <i class="far fa-umbrella-beach"></i>
+                            </div>
+                            <div class="services__content pr-10">
+                                <h5>Aide Financière</h5>
+                                <p>Aide Financière aux associations avoir des mini-projet à faire.</p>
+                                <a href="{% url 'login' %}">voir en plus <i class="fas fa-chevron-double-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-6 col-md-6">
+                        <div class="services services-three d-md-flex mb-30">
+                            <div class="services__icon__two mt-15 mr-35">
+                                <i class="far fa-users-cog"></i>
+                            </div>
+                            <div class="services__content pr-10">
+                                <h5>Creation Projet</h5>
+                                <p>Creation projet agriculture pour aider les paysans</p>
+                                <a href="{% url 'login' %}">voir en plus <i class="fas fa-chevron-double-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xl-4 col-lg-6 col-md-6">
+                        <div class="services services-three d-md-flex mb-30">
+                            <div class="services__icon__two mt-15 mr-35">
+                                <i class="far fa-users-cog"></i>
+                            </div>
+                            <div class="services__content pr-10">
+                                <h5>Formation</h5>
+                                <p>Formation pour les paysans agriculteur membre dans une association</p>
+                                <a href="{% url 'login' %}">voir en plus <i class="fas fa-chevron-double-right"></i></a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--what-we-do end-->
+        <!--our-team-area start-->
+        <section class="our-team-two pos-rel pt-125 pb-100">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-6 offset-xl-3">
+                        <div class="section-title text-center mb-75">
+                            <span class="mb-15">Partenariat</span>
+                            <h2 class="mb-30">Notre Partenaire d'activité</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    {% if partenaire %}
+                        {% for prt in partenaire %}
+                            <div class="col-xl-3 col-lg-3 col-md-6">
+                                <div class="teams pos-rel text-center mb-30">
+                                    <div class="teams__imgs pos-rel mb-30">
+                                        <img src="{{ prt.image.url }}" alt="">
+                                    </div>
+                                    <div class="teams__contents pos-abl">
+                                        <div class="team__name teams__names text-left">
+                                            <h6>{{ prt.first_name }}&nbsp;{{ prt.last_name }}</h6>
+                                            <p>{{ prt.email }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            </div>
+        </section>
+        <!--our-team-area end-->
+        <!--counter-area start-->
+        <section class="counter-area theme-bg pt-105 pb-90">
+            <div class="shape-one">
+                <img class="counte-rimg d-none d-md-block" src="{% static 'asset/img/icon/leaf3.png' %}" alt="">
+            </div>
+            <div class="shape-two">
+                <img class="counte-rimg-two" src="{% static 'asset/img/icon/leaf4.png' %}" alt="">
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-3 col-lg-3 col-md-6">
+                        <div class="counter__box text-center mb-30">
+                            <h1 class="mb-20"><span class="counter">10</span></h1>
+                            <h3 class="mb-15">Ans d'Experience</h3>
+                            <p>Formation Professionnel</p>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-3 col-md-6">
+                        <div class="counter__box text-center mb-30">
+                            <h1 class="mb-20"><span class="counter">4</span>k</h1>
+                            <h3 class="mb-15">Peuples Satisfaits</h3>
+                            <p>Agriculture Professionnel</p>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-3 col-md-6">
+                        <div class="counter__box text-center mb-30">
+                            <h1 class="mb-20"><span class="counter">{{ technicien|length }}</span></h1>
+                            <h3 class="mb-15">Technicien Membres</h3>
+                            <p>Formateur Diplômé</p>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-3 col-md-6">
+                        <div class="counter__box text-center mb-30">
+                            <h1 class="mb-20"><span class="counter">{{ user|length }}</span></h1>
+                            <h3 class="mb-15">Utilisateurs Membres</h3>
+                            <p>Utulisateurs Inscrits</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--counter-area end-->
+        <!--testimonial-area start-->
+        <section class="testimonial-area grey-bg pos-rel pt-120 pb-130">
+            <div class="shape-one"><img src="{% static 'asset/img/testimonial/leaf6.png' %}" alt=""></div>
+            <div class="shape-two"><img class="pot-img" src="{% static 'asset/img/testimonial/pot.png' %}" alt=""></div>
+            <div class="shape-three"><img src="{% static 'asset/img/testimonial/leaf7.png' %}" alt=""></div>
+            <div class="shape-four"><img class="axe-img" src="{% static 'asset/img/testimonial/axe.png' %}" alt="">
+            </div>
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-6 offset-xl-3">
+                        <div class="section-title text-center mb-80">
+                            <span class="mb-15">Message des visiteurs</span>
+                            <h2 class="mb-30">Comment les peuples ont dit ?</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-active">
+                    {% if visitor %}
+                        {% for vst in visitor %}
+                            <div class="testimonial pt-70 pr-45 mb-100">
+                                <div class="testimonial__content d-md-flex align-items-center">
+                                    <div class="testimonial__content--img pos-rel mr-30 pl-30 mb-30">
+                                        <img src="{% static 'asset/img/testimonial/testimonial1.png' %}" alt="">
+                                    </div>
+                                    <div class="testimonial__content--text">
+                                        <h5>{{ vst.message }}</h5>
+                                        <div class="clien-name">
+                                            <h6>{{ vst.fullname }}</h6>
+                                            <span class="pos-rel pl-30">{{ vst.email }}</span>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            </div>
+        </section>
+        <!--testimonial-area end-->
+    </main>
+{% endblock %}

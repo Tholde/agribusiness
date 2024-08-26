@@ -1,0 +1,126 @@
+﻿{% extends 'home/base.html' %}
+{% load static %}
+{% block content %}
+    <main>
+        <!--page-title-area start-->
+        <section class="page-title-area pos-rel"
+                 style="background-image: url({% static 'asset/img/bg/page-banner.jpg' %});">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-8 offset-xl-2">
+                        <div class="page-title text-center pt-180">
+                            <h2>Contacter Nous</h2>
+                            <div class="breadcrumb-list text-center">
+                                <ul>
+                                    <li><a href="#">Accueil</a></li>
+                                    <li>Contacter Nous</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--page-title-area start-->
+        <!--contact-info-area start-->
+        <section class="contact-info-area pt-120 pb-80">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-6 offset-xl-3">
+                        <div class="section-title text-center mb-80 ml-55">
+                            <span class="mb-15">Information de Contacte</span>
+                            <h2 class="mb-30">Contacter nous si vous besoin d'aide.</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    <div class="col-xl-3 col-lg-3 col-md-6">
+                        <div class="contact pos-rel pt-25 pl-45 mb-40">
+                            <h3>Notre Email</h3>
+                            <a href="#"><i class="far fa-envelope-open"></i>rahalahifaliako.t@zurcher.edu.mg</a>
+                            <span><i class="far fa-envelope-open"></i></span>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-3 col-md-6">
+                        <div class="contact pos-rel pt-25 pl-45 mb-40">
+                            <h3>Adresse du Bureau</h3>
+                            <a href="#"><i class="far fa-map-marker-alt"></i>Jerosalema Building, Sambaina Gare,
+                                Antsirabe MG</a>
+                            <span><i class="far fa-map-marked-alt"></i></span>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-3 col-md-6">
+                        <div class="contact pos-rel pt-25 pl-45 mb-40">
+                            <h3>Telephone</h3>
+                            <a href="#"><i class="fal fa-phone"></i> +261 34 54 542 80 </a><br>
+                            <a href="#"><i class="fal fa-phone"></i> +261 32 61 109 49 </a>
+                            <span><i class="far fa-phone-rotary"></i></span>
+                        </div>
+                    </div>
+                    <div class="col-xl-3 col-lg-3 col-md-6">
+                        <div class="contact pos-rel pt-25 pl-45 mb-40">
+                            <h3>Adresse de Bureau</h3>
+                            <a href="#">
+                                <i class="far fa-map-marker-alt"></i>Jerosalema Building, Sambaina Gare, Antsirabe MG
+                            </a>
+                            <span><i class="far fa-map-marked-alt"></i></span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--contact-info-area end-->
+        <!--cta-area start-->
+        <section class="cta-area grey-bg pos-rel pb-75">
+            <div class="contact-left-img d-none d-lg-block pos-abl"><img src="{% static 'asset/cta-bg3.png' %}" alt="">
+            </div>
+            <div class="container-fluid">
+                <div class="row">
+                    <div class="col-xl-7 col-lg-7 col-md-12 offset-xl-5 offset-lg-5">
+                        <div class="section-title text-left pt-80">
+                            <span class="mb-15">Get In Touch</span>
+                            <h2 class="mb-30">Envoyer vers nous votre Message </h2>
+                        </div>
+                        {#                        <div class="form-area form-area-03 row pr-105">#}
+                        <form class="form-area form-area-03 row pr-105" method="post"
+                              action="{% url 'save_contact_us' %}">
+                            {% csrf_token %}
+                            <div class="col-md-6 col-12">
+                                <div class="contact-name4 pos-rel mb-30">
+                                    <input type="text" name="fullname" class="form-control"
+                                           placeholder="Ecrire votre nom complet ici" required>
+                                    <span><i class="fal fa-user"></i></span>
+                                </div>
+                            </div>
+                            <div class="col-md-6 col-12">
+                                <div class="contact-mail3 pos-rel mb-30">
+                                    <input type="text" name="email" class="form-control"
+                                           placeholder="Ecrire votre email ici" required>
+                                    <span><i class="fal fa-envelope-open"></i></span>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <div class="contact-message4 pos-rel mb-30">
+                                        <textarea name="message" id="message"
+                                                  placeholder="Ecrire votre message ici" required></textarea>
+                                    <span><i class="fal fa-pencil"></i></span>
+                                </div>
+                            </div>
+                            <div class="col-12">
+                                <button type="submit" class="theme_btn">Envoyer le message</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--cta-area end-->
+        <!--cta-map-area start-->
+        <section class="cta-map-area">
+            <div class="contact-map">
+                <div id="contact-map"></div>
+            </div>
+        </section>
+        <!--cta-maparea end-->
+    </main>
+{% endblock content %}

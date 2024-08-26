@@ -1,0 +1,114 @@
+{% extends 'technicien/base.html' %}
+{% load static %}
+{% block content %}
+    <div class="relative min-h-screen group-data-[sidebar-size=sm]:min-h-[1500px]">
+
+        <div class="group-data-[sidebar-size=lg]:ltr:lg:ml-vertical-menu group-data-[sidebar-size=lg]:rtl:lg:mr-vertical-menu group-data-[sidebar-size=md]:ltr:ml-vertical-menu-md group-data-[sidebar-size=md]:rtl:mr-vertical-menu-md group-data-[sidebar-size=sm]:ltr:lg:ml-vertical-menu-sm group-data-[sidebar-size=sm]:lg:rtl:mr-vertical-menu-sm pt-[calc(theme('spacing.header')_*_1)] pb-[calc(theme('spacing.header')_*_1)] px-6 group-data-[layout=horizontal]:!mx-auto group-data-[layout=horizontal]:max-w-screen-2xl  group-data-[layout=horizontal]:lg:pt-[calc(theme('spacing.header')_*_1.75)] ">
+            <div class="container-fluid">
+
+                <div class="md:flex items-center justify-between pt-6 pb-5">
+                    <div>
+                        <h6 class="mb-0 text-16 uppercase font-semibold dark:text-white">Produit</h6>
+                    </div>
+                    <div class="shrink-0">
+                        <ul class="mb-0 flex items-center gap-4 text-[13px] mt-2 md:mt-0">
+                            <li class="before:content-['/'] before:absolute ltr:before:-right-1 rtl:before:-left-2 before:text-gray-600 before:text-[9px] before:top-0 before:bottom-0 before:flex before:items-center relative pr-3 inline-block">
+                                <a href="#!" class="text-gray-800 dark:text-white">Vente</a></li>
+                            <li class="text-gray-600 dark:text-zink-200">Produit</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="nav-tabs tab-pill  grid grid-cols-12 ">
+                    <ul class="w-full text-sm text-gray-800 nav col-span-12 lg:col-span-2 space-y-4 sm:space-y-0 lg:space-y-6 sm:flex lg:block">
+                        <li class="w-full">
+                            <a href="javascript:void(0);" data-tw-toggle="tab" data-tw-target="underline-message"
+                               class="block px-3.5 py-7 rounded hover:text-green-500 bg-white text-center dark:bg-zink-700 dark:text-white hover:bg-gray-500 active:bg-green-600">
+                                <div>
+                                    <i class="bx bx-badge-check d-block text-4xl mb-2"></i>
+                                    <p class="font-semibold">Historique</p>
+                                </div>
+                            </a>
+                        </li>
+
+                    </ul>
+                    <div class="tab-content text-13 lg:ml-6 rtl:mr-6 mt-6 lg:mt-0 col-span-12 lg:col-span-10">
+                        <div class="hidden tab-pane" id="underline-message">
+                            <div class="bg-white p-5 dark:bg-zink-700">
+                                <div class="border border-gray-300 p-4 dark:border-zink-50">
+                                    <h2 class="text-15 font-semibold mb-6">Commande pas accepter</h2>
+                                    <table class="table w-full ltr:text-left rtl:text-right datatable dt-responsive nowrap border-spacing-y-1.5 border-collapse text-gray-800 ">
+                                        <thead>
+                                        <tr class="bg-[#eff2f7] dark:bg-zink-700">
+                                            <th class="p-3 border-b border-gray-400/50 font-semibold  dark:border-zink-50dark:text-white dark:border-zink-50 dark:text-white">
+                                                Produit
+                                            </th>
+                                            <th class="p-3 border-b border-gray-400/50 font-semibold  dark:border-zink-50dark:text-white dark:border-zink-50 dark:text-white">
+                                                Fournisseur
+                                            </th>
+                                            <th class="p-3 border-b border-gray-400/50 font-semibold dark:border-zink-50dark:text-white dark:border-zink-50 dark:text-white">
+                                                Reference mobile money
+                                            </th>
+                                            <th class="p-3 border-b border-gray-400/50 font-semibold  dark:border-zink-50dark:text-white dark:border-zink-50 dark:text-white">
+                                                Date d'envoi
+                                            </th>
+                                            <th class="p-3 border-b border-gray-400/50 font-semibold  dark:border-zink-50dark:text-white dark:border-zink-50 dark:text-white">
+                                                Action
+                                            </th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        {% if payment %}
+                                            {% for pay in payment %}
+                                                <tr class="bg-white dark:bg-transparent">
+                                                    <th class="p-3 border-b border-gray-400/50 font-medium  dark:border-zink-50">
+                                                        <h5 class="text-gray-800 truncate text-[14px] dark:text-white">{{ pay.product.name }}</h5>
+                                                    </th>
+                                                    <th class="p-3 border-b border-gray-400/50 font-medium  dark:border-zink-50">
+
+                                                        <h5 class="text-gray-800 truncate text-[14px] dark:text-white">{{ pay.user.first_name }}</h5>
+
+                                                    </th>
+                                                    <th class="p-3 border-b border-gray-400/50 font-medium  dark:border-zink-50 dark:text-zink-200">
+                                                        {{ pay.reference }}
+                                                    </th>
+                                                    <th class="p-3 border-b border-gray-400/50 font-medium  dark:border-zink-50 dark:text-zink-200">
+                                                        {{ pay.date_envoyer|date:"Y-N-d, h:i:s A" }}
+                                                    </th>
+                                                    <td class="p-3 border-b border-gray-400/50 font-medium  dark:border-zink-50 dark:text-zink-200">
+                                                        <ul class="flex">
+                                                            <li><a href="{% url 'technicien_show' pay.id %}"
+                                                                   class="rounded dark:bg-green-500/10 bg-green-50 w-6 h-6 mx-2 flex justify-center items-center">
+                                                                <i class="mdi mdi-pencil-outline text-green-500 "></i></a>
+                                                            </li>
+                                                        </ul>
+                                                </tr>
+                                            {% endfor %}
+                                        {% endif %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                            </div>
+                        </div>
+                        <div>
+                            <div class="flex justify-end lg:justify-between items-center mt-5">
+                                <a href="{% url 'dashboard' %}"
+                                   class=" text-gray-700 dark:text-white cursor-pointer hidden lg:flex">
+                                    <span> <i class="mdi mdi-arrow-left me-1 block rtl:rotate-180"></i></span> Retourner
+                                    au page d'accueil
+                                </a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- container-fluid -->
+
+            <!-- End Page-content -->
+
+            {% include 'fournisseur/footer.html' %}
+        </div>
+        <!-- end main content -->
+    </div>
+
+{% endblock %}

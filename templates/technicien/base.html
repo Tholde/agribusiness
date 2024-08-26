@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+{% load static %}
+<html lang="en" class="light scroll-smooth group" data-layout="vertical" data-topbar="light" data-sidebar="dark"
+      data-sidebar-size="lg" dir="ltr">
+
+<head>
+
+    <meta charset="utf-8">
+    <title>Technicien Dashboard | Agribusiness by Tholde </title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- App favicon -->
+    <link rel="shortcut icon" href="{% static 'icon.png' %}">
+    <!-- Layout config Js -->
+    <script src="{% static 'assets/js/pages/layout.js' %}"></script>
+    <!-- Icons CSS -->
+    <!-- Tailwind CSS -->
+    <link rel="stylesheet" href="{% static 'assets/css/tailwind2.css' %}">
+</head>
+
+<body class="text-base text-body-color font-poppins bg-body dark:text-white dark:bg-zink-800 ">
+<div class="group-data-[sidebar-size=sm]:min-h-[1500px] group-data-[sidebar-size=sm]:relative">
+    <div class="vertical-menu">
+        <div id="sidebar" style="background: #198754"
+             class="sidebar-left hidden lg:block w-vertical-menu bg-vertical-menu ltr:border-r rtl:border-l border-vertical-menu fixed bottom-0 top-0 transition-all duration-200 ease-linear group-data-[sidebar-size=md]:w-vertical-menu-md group-data-[sidebar-size=sm]:w-vertical-menu-sm group-data-[sidebar=dark]:bg-vertical-menu-dark group-data-[sidebar=dark]:border-vertical-menu-dark group-data-[sidebar=brand]:bg-vertical-menu-brand group-data-[sidebar=brand]:border-vertical-menu-brand group-data-[layout=horizontal]:w-full group-data-[layout=horizontal]:bottom-auto group-data-[layout=horizontal]:top-header z-40 ">
+            <div class="flex items-center justify-center px-6 text-center h-header group-data-[layout=horizontal]:hidden sidebar-logo">
+                <a href="" class="group-data-[sidebar=dark]:hidden group-data-[sidebar=brand]:hidden">
+                <span class="hidden group-data-[sidebar-size=sm]:block">
+                    <img src="{% static 'icon.png' %}" alt="" class="h-[38px] mx-auto">
+                </span>
+                    <span class="group-data-[sidebar-size=sm]:hidden">
+                    <img src="{% static 'agribusiness.png' %}" alt="" class="h-[38px] mx-auto">
+                </span>
+                </a>
+                <a href=""
+                   class="hidden group-data-[sidebar=dark]:block group-data-[sidebar=brand]:block">
+                <span class="hidden group-data-[sidebar-size=sm]:block">
+                    <img src="{% static 'icon-white.png' %}" alt="" class="h-[38px] mx-auto">
+                </span>
+                    <span class="group-data-[sidebar-size=sm]:hidden">
+                    <img src="{% static 'agribusiness-white.png' %}" alt="" class="h-[38px] mx-auto">
+                </span>
+                </a>
+                <button type="button" class="hidden p-0 float-end" id="vertical-hover">
+                    <i class="ri-record-circle-line text-green-500"></i>
+                </button>
+            </div>
+
+            <div id="scrollbar" style="background: #198754">
+                <div class="group-data-[layout=horizontal]:mx-auto group-data-[layout=horizontal]:max-w-screen-2xl">
+                    <div data-simplebar=""
+                         class="group-data-[layout=vertical]:group-data-[sidebar-size=md]:max-h-[calc(100vh_-_80px)] group-data-[layout=vertical]:group-data-[sidebar-size=lg]:max-h-[calc(100vh_-_80px)]"
+                         id="data-simplebar">
+                        <div id="sidebar-menu" class="">
+                            <!-- MENU -->
+                            <ul class="group-data-[layout=horizontal]:flex group-data-[layout=vertical]:mt-[10px]">
+                                <li class="px-5 py-3  group-data-[layout=vertical]:text-[#6a7187] uppercase font-semibold text-[11px] cursor-default tracking-wider group-data-[sidebar-size=sm]:hidden group-data-[layout=horizontal]:hidden inline-block group-data-[sidebar-size=md]:block group-data-[sidebar-size=md]:underline group-data-[sidebar-size=md]:text-center">
+                                    <span data-key="t-menu" style="color: aliceblue">Menu</span></li>
+                                <li class="nav-items">
+                                    <div class="group-data-[sidebar-size=sm]:py-4  group-data-[sidebar-size=sm]:px-5 py-[10px] px-6  flex items-center justify-between group-data-[layout=vertical]:text-vertical-menu-item-font-size font-normal transition-all duration-150 ease-linear rounded-sm  group-data-[layout=vertical]:text-vertical-menu-item  active:text-vertical-menu active:bg-vertical-menu-item-bg-active group-data-[sidebar=dark]:group-data-[layout=vertical]:text-vertical-menu-item-dark group-data-[layout=vertical]:group-data-[sidebar=dark]:hover:text-vertical-menu group-data-[sidebar=dark]:hover:bg-vertical-menu-item-bg-hover-dark group-data-[sidebar=dark]:active:text-vertical-menu group-data-[sidebar=dark]:active:bg-vertical-menu-item-bg-active-dark group-data-[sidebar-size=md]:block  group-data-[sidebar-size=sm]:my-0 group-data-[sidebar-size=sm]:rounded-b-none group-data-[layout=horizontal]:m-0 ">
+                                        <a href="{% url 'dashboard' %}"
+                                           class="text-white mm-collaps group-data-[sidebar-size=lg]:flex group-data-[sidebar-size=lg]:items-center group-data-[layout=horizontal]:ltr:before:-right-5 group-data-[layout=horizontal]:rtl:before:-left-6">
+                                            <i class="bx bx-home-circle inline-block text-start text-xl group-data-[sidebar-size=md]:block group-data-[sidebar-size=md]:text-center group-data-[layout=horizontal]:text-15"></i>
+                                            <span class="group-data-[sidebar-size=sm]:ltr:pl-10 group-data-[sidebar-size=sm]:rtl:pr-10  group-data-[sidebar-size=md]:block group-data-[sidebar-size=md]:mt-2  group-data-[sidebar-size=md]:text-center ltr:pl-3 rtl:pr-3 group-data-[layout=horizontal]:pl-2 group-data-[layout=horizontal]:rtl:pr-2"
+                                                  data-key="t-dashboards">Dashboard</span>
+                                        </a>
+                                    </div>
+                                </li>
+
+                                <!-- Profile -->
+                                <li class="nav-items">
+                                    <div class="group-data-[sidebar-size=sm]:py-4  group-data-[sidebar-size=sm]:px-5 py-[10px] px-6  flex items-center justify-between group-data-[layout=vertical]:text-vertical-menu-item-font-size font-normal transition-all duration-150 ease-linear rounded-sm  group-data-[layout=vertical]:text-vertical-menu-item  active:text-vertical-menu active:bg-vertical-menu-item-bg-active group-data-[sidebar=dark]:group-data-[layout=vertical]:text-vertical-menu-item-dark group-data-[layout=vertical]:group-data-[sidebar=dark]:hover:text-vertical-menu group-data-[sidebar=dark]:hover:bg-vertical-menu-item-bg-hover-dark group-data-[sidebar=dark]:active:text-vertical-menu group-data-[sidebar=dark]:active:bg-vertical-menu-item-bg-active-dark group-data-[sidebar-size=md]:block  group-data-[sidebar-size=sm]:my-0 group-data-[sidebar-size=sm]:rounded-b-none group-data-[layout=horizontal]:m-0 ">
+                                        <a href="{% url 'admin_profile' %}"
+                                           class="text-white mm-collaps group-data-[sidebar-size=lg]:flex group-data-[sidebar-size=lg]:items-center group-data-[layout=horizontal]:ltr:before:-right-5 group-data-[layout=horizontal]:rtl:before:-left-6">
+                                            <i class="bx bxs-user-account  inline-block text-start text-xl group-data-[sidebar-size=md]:block group-data-[sidebar-size=md]:text-center group-data-[layout=horizontal]:text-15"></i>
+                                            <span class="group-data-[sidebar-size=sm]:ltr:pl-10 group-data-[sidebar-size=sm]:rtl:pr-10  group-data-[sidebar-size=md]:block group-data-[sidebar-size=md]:mt-2  group-data-[sidebar-size=md]:text-center ltr:pl-3 rtl:pr-3 group-data-[layout=horizontal]:pl-2 group-data-[layout=horizontal]:rtl:pr-2"
+                                                  data-key="t-crypto">Profile</span>
+                                        </a>
+                                    </div>
+                                </li>
+
+{#                                <li class="nav-items">#}
+{#                                    <div class="group-data-[sidebar-size=sm]:py-4  group-data-[sidebar-size=sm]:px-5 py-[10px] px-6  flex items-center justify-between group-data-[layout=vertical]:text-vertical-menu-item-font-size font-normal transition-all duration-150 ease-linear rounded-sm  group-data-[layout=vertical]:text-vertical-menu-item  active:text-vertical-menu active:bg-vertical-menu-item-bg-active group-data-[sidebar=dark]:group-data-[layout=vertical]:text-vertical-menu-item-dark group-data-[layout=vertical]:group-data-[sidebar=dark]:hover:text-vertical-menu group-data-[sidebar=dark]:hover:bg-vertical-menu-item-bg-hover-dark group-data-[sidebar=dark]:active:text-vertical-menu group-data-[sidebar=dark]:active:bg-vertical-menu-item-bg-active-dark group-data-[sidebar-size=md]:block  group-data-[sidebar-size=sm]:my-0 group-data-[sidebar-size=sm]:rounded-b-none group-data-[layout=horizontal]:m-0   group-data-[sidebar-size=md]:before:hidden">#}
+{#                                        <a href="{% url 'calendar_admin' %}"#}
+{#                                           class="text-white mm-collaps group-data-[sidebar-size=lg]:flex group-data-[sidebar-size=lg]:items-center group-data-[layout=horizontal]:ltr:before:-right-5 group-data-[layout=horizontal]:rtl:before:-left-6">#}
+{#                                            <i class="bx bx-calendar  inline-block text-start text-xl group-data-[sidebar-size=md]:block group-data-[sidebar-size=md]:text-center group-data-[layout=horizontal]:text-15"></i>#}
+{#                                            <span class="group-data-[sidebar-size=sm]:ltr:pl-10 group-data-[sidebar-size=sm]:rtl:pr-10 group-data-[sidebar-size=md]:block group-data-[sidebar-size=md]:mt-2  group-data-[sidebar-size=md]:text-center ltr:pl-3 rtl:pr-3 group-data-[layout=horizontal]:pl-2 group-data-[layout=horizontal]:rtl:pr-2 whitespace-nowrap"#}
+{#                                                  data-key="t-full-calendar">Calendrier</span>#}
+{#                                        </a>#}
+{#                                    </div>#}
+{##}
+{#                                </li>#}
+
+                                <!-- chat -->
+                                <li class="nav-items">
+                                    <div class="group-data-[sidebar-size=sm]:py-4  group-data-[sidebar-size=sm]:px-5 py-[10px] px-6  flex items-center justify-between group-data-[layout=vertical]:text-vertical-menu-item-font-size font-normal transition-all duration-150 ease-linear rounded-sm  group-data-[layout=vertical]:text-vertical-menu-item  active:text-vertical-menu active:bg-vertical-menu-item-bg-active group-data-[sidebar=dark]:group-data-[layout=vertical]:text-vertical-menu-item-dark group-data-[layout=vertical]:group-data-[sidebar=dark]:hover:text-vertical-menu group-data-[sidebar=dark]:hover:bg-vertical-menu-item-bg-hover-dark group-data-[sidebar=dark]:active:text-vertical-menu group-data-[sidebar=dark]:active:bg-vertical-menu-item-bg-active-dark group-data-[sidebar-size=md]:block  group-data-[sidebar-size=sm]:my-0 group-data-[sidebar-size=sm]:rounded-b-none group-data-[layout=horizontal]:m-0 before:content-[''] before:font-material ltr:before:right-6 rtl:before:left-6 before:text-16 before:absolute relative  group-data-[sidebar-size=md]:before:hidden">
+                                        <a href="{% url 'admin_message' %}"
+                                           class="text-white mm-collaps group-data-[sidebar-size=lg]:flex group-data-[sidebar-size=lg]:items-center group-data-[layout=horizontal]:ltr:before:-right-5 group-data-[layout=horizontal]:rtl:before:-left-6">
+                                            <i class="bx bx-chat inline-block text-start text-xl group-data-[sidebar-size=md]:block group-data-[sidebar-size=md]:text-center group-data-[layout=horizontal]:text-15"></i>
+                                            <span class="group-data-[sidebar-size=sm]:ltr:pl-10 group-data-[sidebar-size=sm]:rtl:pr-10 group-data-[sidebar-size=md]:block group-data-[sidebar-size=md]:mt-2  group-data-[sidebar-size=md]:text-center ltr:pl-3 rtl:pr-3 group-data-[layout=horizontal]:pl-2 group-data-[layout=horizontal]:rtl:pr-2 whitespace-nowrap"
+                                                  data-key="t-chat">Messages</span>
+                                        </a>
+                                    </div>
+
+                                </li>
+                                <!-- paysan manager-->
+                                <li class="nav-items">
+                                    <div class="group-data-[sidebar-size=sm]:py-4  group-data-[sidebar-size=sm]:px-5 py-[10px] px-6  flex items-center justify-between group-data-[layout=vertical]:text-vertical-menu-item-font-size font-normal transition-all duration-150 ease-linear rounded-sm  group-data-[layout=vertical]:text-vertical-menu-item  active:text-vertical-menu active:bg-vertical-menu-item-bg-active group-data-[sidebar=dark]:group-data-[layout=vertical]:text-vertical-menu-item-dark group-data-[layout=vertical]:group-data-[sidebar=dark]:hover:text-vertical-menu group-data-[sidebar=dark]:hover:bg-vertical-menu-item-bg-hover-dark group-data-[sidebar=dark]:active:text-vertical-menu group-data-[sidebar=dark]:active:bg-vertical-menu-item-bg-active-dark group-data-[sidebar-size=md]:block  group-data-[sidebar-size=sm]:my-0 group-data-[sidebar-size=sm]:rounded-b-none group-data-[layout=horizontal]:m-0 before:content-[''] before:font-material ltr:before:right-6 rtl:before:left-6 before:text-16 before:absolute relative  group-data-[sidebar-size=md]:before:hidden">
+                                        <a href="{% url 'list_user' %}"
+                                           class="text-white mm-collaps group-data-[sidebar-size=lg]:flex group-data-[sidebar-size=lg]:items-center">
+                                            <i class="bx bx-user-circle  inline-block text-start text-xl group-data-[sidebar-size=md]:block group-data-[sidebar-size=md]:text-center group-data-[layout=horizontal]:text-15"></i>
+                                            <span class="group-data-[sidebar-size=sm]:ltr:pl-10 group-data-[sidebar-size=sm]:rtl:pr-10 group-data-[sidebar-size=md]:block group-data-[sidebar-size=md]:mt-2  group-data-[sidebar-size=md]:text-center ltr:pl-3 rtl:pr-3 group-data-[layout=horizontal]:pl-2 group-data-[layout=horizontal]:rtl:pr-2 whitespace-nowrap"
+                                                  data-key="t-file-manager">Gestion des Utilisateurs</span>
+                                        </a>
+                                    </div>
+
+                                </li>
+                                <!-- product manager-->
+                                <li class="nav-items">
+                                    <div class="group-data-[sidebar-size=sm]:py-4  group-data-[sidebar-size=sm]:px-5 py-[10px] px-6  flex items-center justify-between group-data-[layout=vertical]:text-vertical-menu-item-font-size font-normal transition-all duration-150 ease-linear rounded-sm  group-data-[layout=vertical]:text-vertical-menu-item  active:text-vertical-menu active:bg-vertical-menu-item-bg-active group-data-[sidebar=dark]:group-data-[layout=vertical]:text-vertical-menu-item-dark group-data-[layout=vertical]:group-data-[sidebar=dark]:hover:text-vertical-menu group-data-[sidebar=dark]:hover:bg-vertical-menu-item-bg-hover-dark group-data-[sidebar=dark]:active:text-vertical-menu group-data-[sidebar=dark]:active:bg-vertical-menu-item-bg-active-dark group-data-[sidebar-size=md]:block  group-data-[sidebar-size=sm]:my-0 group-data-[sidebar-size=sm]:rounded-b-none group-data-[layout=horizontal]:m-0 before:content-[''] before:font-material ltr:before:right-6 rtl:before:left-6 before:text-16 before:absolute relative  group-data-[sidebar-size=md]:before:hidden">
+                                        <a href="{% url 'list_product' %}"
+                                           class="text-white mm-collaps group-data-[sidebar-size=lg]:flex group-data-[sidebar-size=lg]:items-center">
+                                            <i class="bx bxl-product-hunt  inline-block text-start text-xl group-data-[sidebar-size=md]:block group-data-[sidebar-size=md]:text-center group-data-[layout=horizontal]:text-15"></i>
+                                            <span class="group-data-[sidebar-size=sm]:ltr:pl-10 group-data-[sidebar-size=sm]:rtl:pr-10 group-data-[sidebar-size=md]:block group-data-[sidebar-size=md]:mt-2  group-data-[sidebar-size=md]:text-center ltr:pl-3 rtl:pr-3 group-data-[layout=horizontal]:pl-2 group-data-[layout=horizontal]:rtl:pr-2 whitespace-nowrap"
+                                                  data-key="t-file-manager">Gestion des Produits</span>
+                                        </a>
+                                    </div>
+
+                                </li>
+                                <!-- formation manager-->
+                                <li class="nav-items">
+                                    <div class="group-data-[sidebar-size=sm]:py-4  group-data-[sidebar-size=sm]:px-5 py-[10px] px-6  flex items-center justify-between group-data-[layout=vertical]:text-vertical-menu-item-font-size font-normal transition-all duration-150 ease-linear rounded-sm  group-data-[layout=vertical]:text-vertical-menu-item  active:text-vertical-menu active:bg-vertical-menu-item-bg-active group-data-[sidebar=dark]:group-data-[layout=vertical]:text-vertical-menu-item-dark group-data-[layout=vertical]:group-data-[sidebar=dark]:hover:text-vertical-menu group-data-[sidebar=dark]:hover:bg-vertical-menu-item-bg-hover-dark group-data-[sidebar=dark]:active:text-vertical-menu group-data-[sidebar=dark]:active:bg-vertical-menu-item-bg-active-dark group-data-[sidebar-size=md]:block  group-data-[sidebar-size=sm]:my-0 group-data-[sidebar-size=sm]:rounded-b-none group-data-[layout=horizontal]:m-0 before:content-[''] before:font-material ltr:before:right-6 rtl:before:left-6 before:text-16 before:absolute relative  group-data-[sidebar-size=md]:before:hidden">
+                                        <a href="{% url 'readAllFormation' %}"
+                                           class="text-white mm-collaps group-data-[sidebar-size=lg]:flex group-data-[sidebar-size=lg]:items-center">
+                                            <i class="bx bxs-package  inline-block text-start text-xl group-data-[sidebar-size=md]:block group-data-[sidebar-size=md]:text-center group-data-[layout=horizontal]:text-15"></i>
+                                            <span class="group-data-[sidebar-size=sm]:ltr:pl-10 group-data-[sidebar-size=sm]:rtl:pr-10 group-data-[sidebar-size=md]:block group-data-[sidebar-size=md]:mt-2  group-data-[sidebar-size=md]:text-center ltr:pl-3 rtl:pr-3 group-data-[layout=horizontal]:pl-2 group-data-[layout=horizontal]:rtl:pr-2 whitespace-nowrap"
+                                                  data-key="t-file-manager">Gestion des Formations</span>
+                                        </a>
+                                    </div>
+
+                                </li>
+                                <!-- association manager-->
+                                <li class="nav-items">
+                                    <div class="group-data-[sidebar-size=sm]:py-4  group-data-[sidebar-size=sm]:px-5 py-[10px] px-6  flex items-center justify-between group-data-[layout=vertical]:text-vertical-menu-item-font-size font-normal transition-all duration-150 ease-linear rounded-sm  group-data-[layout=vertical]:text-vertical-menu-item  active:text-vertical-menu active:bg-vertical-menu-item-bg-active group-data-[sidebar=dark]:group-data-[layout=vertical]:text-vertical-menu-item-dark group-data-[layout=vertical]:group-data-[sidebar=dark]:hover:text-vertical-menu group-data-[sidebar=dark]:hover:bg-vertical-menu-item-bg-hover-dark group-data-[sidebar=dark]:active:text-vertical-menu group-data-[sidebar=dark]:active:bg-vertical-menu-item-bg-active-dark group-data-[sidebar-size=md]:block  group-data-[sidebar-size=sm]:my-0 group-data-[sidebar-size=sm]:rounded-b-none group-data-[layout=horizontal]:m-0 before:content-[''] before:font-material ltr:before:right-6 rtl:before:left-6 before:text-16 before:absolute relative  group-data-[sidebar-size=md]:before:hidden">
+                                        <a href="{% url 'association_manager' %}"
+                                           class="text-white mm-collaps group-data-[sidebar-size=lg]:flex group-data-[sidebar-size=lg]:items-center">
+                                            <i class="bx bx-paper-plane  inline-block text-start text-xl group-data-[sidebar-size=md]:block group-data-[sidebar-size=md]:text-center group-data-[layout=horizontal]:text-15"></i>
+                                            <span class="group-data-[sidebar-size=sm]:ltr:pl-10 group-data-[sidebar-size=sm]:rtl:pr-10 group-data-[sidebar-size=md]:block group-data-[sidebar-size=md]:mt-2  group-data-[sidebar-size=md]:text-center ltr:pl-3 rtl:pr-3 group-data-[layout=horizontal]:pl-2 group-data-[layout=horizontal]:rtl:pr-2 whitespace-nowrap"
+                                                  data-key="t-file-manager">Gestion des Association</span>
+                                        </a>
+                                    </div>
+                                </li>
+                                <!-- work manager-->
+                                <li class="nav-items">
+                                    <div class="group-data-[sidebar-size=sm]:py-4  group-data-[sidebar-size=sm]:px-5 py-[10px] px-6  flex items-center justify-between group-data-[layout=vertical]:text-vertical-menu-item-font-size font-normal transition-all duration-150 ease-linear rounded-sm  group-data-[layout=vertical]:text-vertical-menu-item  active:text-vertical-menu active:bg-vertical-menu-item-bg-active group-data-[sidebar=dark]:group-data-[layout=vertical]:text-vertical-menu-item-dark group-data-[layout=vertical]:group-data-[sidebar=dark]:hover:text-vertical-menu group-data-[sidebar=dark]:hover:bg-vertical-menu-item-bg-hover-dark group-data-[sidebar=dark]:active:text-vertical-menu group-data-[sidebar=dark]:active:bg-vertical-menu-item-bg-active-dark group-data-[sidebar-size=md]:block  group-data-[sidebar-size=sm]:my-0 group-data-[sidebar-size=sm]:rounded-b-none group-data-[layout=horizontal]:m-0 before:content-[''] before:font-material ltr:before:right-6 rtl:before:left-6 before:text-16 before:absolute relative  group-data-[sidebar-size=md]:before:hidden">
+                                        <a href="{% url 'work' %}"
+                                           class="text-white mm-collaps group-data-[sidebar-size=lg]:flex group-data-[sidebar-size=lg]:items-center">
+                                            <i class="bx bx-world  inline-block text-start text-xl group-data-[sidebar-size=md]:block group-data-[sidebar-size=md]:text-center group-data-[layout=horizontal]:text-15"></i>
+                                            <span class="group-data-[sidebar-size=sm]:ltr:pl-10 group-data-[sidebar-size=sm]:rtl:pr-10 group-data-[sidebar-size=md]:block group-data-[sidebar-size=md]:mt-2  group-data-[sidebar-size=md]:text-center ltr:pl-3 rtl:pr-3 group-data-[layout=horizontal]:pl-2 group-data-[layout=horizontal]:rtl:pr-2 whitespace-nowrap"
+                                                  data-key="t-file-manager">Gestion de Travail</span>
+                                        </a>
+                                    </div>
+
+                                </li>
+                                <!-- work manager-->
+                                <li class="nav-items">
+                                    <div class="group-data-[sidebar-size=sm]:py-4  group-data-[sidebar-size=sm]:px-5 py-[10px] px-6  flex items-center justify-between group-data-[layout=vertical]:text-vertical-menu-item-font-size font-normal transition-all duration-150 ease-linear rounded-sm  group-data-[layout=vertical]:text-vertical-menu-item  active:text-vertical-menu active:bg-vertical-menu-item-bg-active group-data-[sidebar=dark]:group-data-[layout=vertical]:text-vertical-menu-item-dark group-data-[layout=vertical]:group-data-[sidebar=dark]:hover:text-vertical-menu group-data-[sidebar=dark]:hover:bg-vertical-menu-item-bg-hover-dark group-data-[sidebar=dark]:active:text-vertical-menu group-data-[sidebar=dark]:active:bg-vertical-menu-item-bg-active-dark group-data-[sidebar-size=md]:block  group-data-[sidebar-size=sm]:my-0 group-data-[sidebar-size=sm]:rounded-b-none group-data-[layout=horizontal]:m-0 before:content-[''] before:font-material ltr:before:right-6 rtl:before:left-6 before:text-16 before:absolute relative  group-data-[sidebar-size=md]:before:hidden">
+                                        <a href="{% url 'read_all_projects' %}"
+                                           class="text-white mm-collaps group-data-[sidebar-size=lg]:flex group-data-[sidebar-size=lg]:items-center">
+                                            <i class="bx bx-world  inline-block text-start text-xl group-data-[sidebar-size=md]:block group-data-[sidebar-size=md]:text-center group-data-[layout=horizontal]:text-15"></i>
+                                            <span class="group-data-[sidebar-size=sm]:ltr:pl-10 group-data-[sidebar-size=sm]:rtl:pr-10 group-data-[sidebar-size=md]:block group-data-[sidebar-size=md]:mt-2  group-data-[sidebar-size=md]:text-center ltr:pl-3 rtl:pr-3 group-data-[layout=horizontal]:pl-2 group-data-[layout=horizontal]:rtl:pr-2 whitespace-nowrap"
+                                                  data-key="t-file-manager">Gestion du Projet</span>
+                                        </a>
+                                    </div>
+
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <!-- Sidebar -->
+            </div>
+        </div>
+        <div id="backdrop"
+             class=" fixed inset-0 bg-green-500 z-[1] res-header-bg hidden group-data-[layout=horizontal]:hidden"
+             onclick="closeSidebar()"></div>
+        <!-- Left Sidebar End -->
+    </div>
+    <header id="page-topbar"
+            class="ltr:lg:left-vertical-menu group-data-[layout=vertical]:rtl:lg:right-vertical-menu group-data-[sidebar-size=md]:ltr:left-vertical-menu-md  group-data-[sidebar-size=md]:rtl:right-vertical-menu-md group-data-[sidebar-size=sm]:lg:ltr:left-vertical-menu-sm group-data-[sidebar-size=sm]:lg:rtl:right-vertical-menu-sm group-data-[layout=horizontal]:left-0 group-data-[layout=horizontal]:rtl:p-0 fixed ltr:right-0 rtl:left-0 z-50 ltr:left-0 rtl:right-0">
+
+        <div class="layout-width ">
+            <div class="group-data-[topbar=dark]:bg-topbar-dark flex items-center mx-auto bg-vertical-menu-group-data-[topbar=dark]  group-data-[layout=horizontal]:border-none group-data-[topbar=light]:bg-white group-data-[topbar=light]:text-gray-700 topbar-main">
+                <div class="pr-3 flex  group-data-[layout:vertical]:relative items-center w-full group-data-[layout=horizontal]:mx-auto group-data-[layout=horizontal]:max-w-screen-2xl justify-between ">
+                    <!-- LOGO -->
+                    <div class="items-center justify-center hidden px-5 text-center group-data-[layout=horizontal]:flex group-data-[layout=horizontal]:p-0 group-data-[layout=horizontal]:lg:px-5">
+                        <a href="">
+                        <span class="hidden">
+                            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEwAAABMCAYAAADHl1ErAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyNpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDYuMC1jMDAyIDc5LjE2NDM1MiwgMjAyMC8wMS8zMC0xNTo1MDozOCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIDIxLjEgKFdpbmRvd3MpIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkIwRTMyMENCQThGQTExRURBOUYxRDBCNTE0NjBCMDJFIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkIwRTMyMENDQThGQTExRURBOUYxRDBCNTE0NjBCMDJFIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6QjBFMzIwQzlBOEZBMTFFREE5RjFEMEI1MTQ2MEIwMkUiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6QjBFMzIwQ0FBOEZBMTFFREE5RjFEMEI1MTQ2MEIwMkUiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz7wBzWqAAAL70lEQVR42uycCXAU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"
+                                 alt="" class="h-6 mx-auto">
+                        </span>
+                            <span>
+                            <img src="{% static 'asset/agribusiness.png' %}" alt="" class="h-[19px] mx-auto logo-light">
+                            <img src="{% static 'asset/agribusiness.png' %}" alt=""
+                                 class="h-[38px] mx-auto logo-dark hidden">
+                        </span>
+                        </a>
+                        <a href="" class="hidden">
+                        <span>
+                            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAEwAAABMCAYAAADHl1ErAAAAGXRFWHRTb2Z0d2FyZQBBZG9iZSBJbWFnZVJlYWR5ccllPAAAAyNpVFh0WE1MOmNvbS5hZG9iZS54bXAAAAAAADw/eHBhY2tldCBiZWdpbj0i77u/IiBpZD0iVzVNME1wQ2VoaUh6cmVTek5UY3prYzlkIj8+IDx4OnhtcG1ldGEgeG1sbnM6eD0iYWRvYmU6bnM6bWV0YS8iIHg6eG1wdGs9IkFkb2JlIFhNUCBDb3JlIDYuMC1jMDAyIDc5LjE2NDM1MiwgMjAyMC8wMS8zMC0xNTo1MDozOCAgICAgICAgIj4gPHJkZjpSREYgeG1sbnM6cmRmPSJodHRwOi8vd3d3LnczLm9yZy8xOTk5LzAyLzIyLXJkZi1zeW50YXgtbnMjIj4gPHJkZjpEZXNjcmlwdGlvbiByZGY6YWJvdXQ9IiIgeG1sbnM6eG1wPSJodHRwOi8vbnMuYWRvYmUuY29tL3hhcC8xLjAvIiB4bWxuczp4bXBNTT0iaHR0cDovL25zLmFkb2JlLmNvbS94YXAvMS4wL21tLyIgeG1sbnM6c3RSZWY9Imh0dHA6Ly9ucy5hZG9iZS5jb20veGFwLzEuMC9zVHlwZS9SZXNvdXJjZVJlZiMiIHhtcDpDcmVhdG9yVG9vbD0iQWRvYmUgUGhvdG9zaG9wIDIxLjEgKFdpbmRvd3MpIiB4bXBNTTpJbnN0YW5jZUlEPSJ4bXAuaWlkOkIwRTMyMENCQThGQTExRURBOUYxRDBCNTE0NjBCMDJFIiB4bXBNTTpEb2N1bWVudElEPSJ4bXAuZGlkOkIwRTMyMENDQThGQTExRURBOUYxRDBCNTE0NjBCMDJFIj4gPHhtcE1NOkRlcml2ZWRGcm9tIHN0UmVmOmluc3RhbmNlSUQ9InhtcC5paWQ6QjBFMzIwQzlBOEZBMTFFREE5RjFEMEI1MTQ2MEIwMkUiIHN0UmVmOmRvY3VtZW50SUQ9InhtcC5kaWQ6QjBFMzIwQ0FBOEZBMTFFREE5RjFEMEI1MTQ2MEIwMkUiLz4gPC9yZGY6RGVzY3JpcHRpb24+IDwvcmRmOlJERj4gPC94OnhtcG1ldGE+IDw/eHBhY2tldCBlbmQ9InIiPz7wBzWqAAAL70lEQVR42uycCXAU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"
+                                 alt="" class="h-6 mx-auto">
+                        </span>
+                            <span>
+                            <img src="{% static 'asset/agribusiness.png' %}" alt="" class="h-6 mx-auto">
+                        </span>
+                        </a>
+                    </div>
+                    <div class="res-header-logo w-header h-header p-6 lg:hidden  group-data-[layout=vertical]:bg-zink-700 group-data-[layout=vertical]:mr-4">
+                        <img src="{% static 'asset/icon.png' %}" class="res-light " alt="">
+                        <img src="{% static 'asset/icon.png' %}" class="res-dark" alt="">
+                    </div>
+                    <div class=" group-data-[layout=horizontal]:lg:hidden">
+                        <button type="button"
+                                class="ml-4 sm:ml-0 lg:px-5 header-item waves-effect menubar font-normal h-header"
+                                id="vertical-menu-btn">
+                            <i class="fa fa-bars text-16 text-green-600 group-data-[topbar=dark]:text-green-200 "></i>
+                        </button>
+                    </div>
+
+                    <div class="flex ms-auto items-center">
+                        <div class="hidden lg:block px-3 fullscreen-icon xl:ml-1 cursor-pointer"
+                             data-toggle="fullscreen">
+                            <i class="bx bx-fullscreen text-[22px] text-green-500 group-data-[topbar=dark]:text-zink-200 full-screen-icon"></i>
+                            <i class='hidden mid-screen-icon  text-[22px] text-green-500 group-data-[topbar=dark]:text-zink-200 bx bx-exit-fullscreen'></i>
+                        </div>
+                        <div class="md:relative dropdown px-3">
+                            <button class="p-0  border-0 btn dropdown-toggle h-header text-gray-700 group-data-[topbar=dark]:text-gray-200 flex items-center"
+                                    type="button" data-bs-toggle="dropdown" id="dropdownMenuButton1"
+                                    data-bs-toggle="dropdown">
+                                <img src="{{ admin.image.url }}"
+                                     class="w-9 h-9 p-[3px] rounded-full ltr:mr-2 rtl:ml-2" alt="">
+                                <p class="hidden xl:block text-13 text-gray-700 group-data-[topbar=dark]:text-zink-200 ">
+                                    {{ admin.first_name }} <i class="mdi mdi-chevron-down text-green-500"></i></p>
+                            </button>
+                            <ul class="w-full absolute right-0 left-auto top-auto z-50 hidden md:w-40 py-2 text-left list-none bg-white border border-transparent rounded shadow-4xl dropdown-menu bg-clip-padding group-data-[topbar=dark]:bg-zink-700 group-data-[topbar=dark]:border-zink-50 group-data-[topbar=dark]:text-zink-200"
+                                aria-labelledby="dropdownMenuButton1">
+                                <li>
+                                    <a class="items-center w-full px-4 py-1.5 flex text-sm font-normal bg-transparent dropdown-item whitespace-nowrap hover:bg-gray-50  group-data-[topbar=dark]:text-zink-200 group-data-[topbar=dark]:hover:bg-zink-50 group-data-[topbar=dark]:hover:text-white"
+                                       href="{% url 'admin_profile' %}">
+                                        <span><i class="bx bx-user text-green-500 text-16 ltr:mr-2 rtl:ml-2"></i></span>Profile
+                                    </a>
+                                </li>
+                                <div class="border-t border-text-green-500 group-data-[topbar=dark]:border-zink-50">
+                                    <a class="text-red-500 items-center w-full px-4 py-2 flex text-sm font-normal  bg-transparent dropdown-item whitespace-nowrap hover:bg-gray-50  group-data-[topbar=dark]:text-red-500 group-data-[topbar=dark]:hover:bg-zink-50 group-data-[topbar=dark]:hover:text-white"
+                                       href="{% url 'logout' %}">
+                                        <span><i
+                                                class="bx bx-power-off text-red-500 text-16 ltr:mr-2 rtl:ml-2"></i></span>Déconnexion
+                                    </a>
+                                </div>
+                            </ul>
+                        </div>
+                        <div>
+                            <button class="px-3 h-header" data-drawer-target="drawerSetting">
+                                <i class="bx bx-cog bx-spin text-[22px] text-green-500 group-data-[topbar=dark]:text-zink-200 settingDrawer"></i>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </header>
+    {% block content %}
+    {% endblock content %}
+    <!-- end main content -->
+</div>
+<!-- <div class="hidden" id="drawer"> -->
+<div id="drawerSetting" drawer-end=""
+     class="fixed inset-y-0 dark:bg-zink-700 ltr:right-0 rtl:!left-0 flex flex-col transition-transform duration-300 ease-in-out transform bg-white shadow w-72 md:w-[340px] z-drawer show dark:border-zink-50 ">
+    <div class="flex items-center justify-between px-4 py-6 border-b dark:border-zink-50">
+        <h5 class="text-16 font-medium text-gray-700 dark:text-white">Settings</h5>
+        <button data-drawer-close="drawerSetting"
+                class="w-6 h-6 bg-gray-700 dark:bg-zink-50 flex justify-center items-center rounded-full"><i
+                data-lucide="x" class="mdi mdi-close noti-icon text-white dark:zink-200"></i></button>
+    </div>
+    <div class="h-full p-4 overflow-y-auto ">
+        <div>
+            <div>
+                <h5 class="mb-3 underline capitalize text-15">Choose Layouts</h5>
+                <div class="grid grid-cols-1 mb-5 gap-7 xl:grid-cols-2">
+                    <div class="relative">
+                        <input name="data-layout" id="vertical"
+                               class="absolute w-4 h-4 border rounded-full appearance-none cursor-pointer right-2 top-2 vertical-menu-btn bg-green-100 border-green-300 checked:bg-green-500 checked:border-custom-500 dark:bg-green-500/20"
+                               type="radio" value="vertical" checked="">
+                        <label class="block w-full h-24 p-0 overflow-hidden border rounded-lg cursor-pointer border-green-200 dark:border-green-500/50"
+                               for="vertical">
+                            <span class="flex h-full gap-0">
+                                <span class="shrink-0">
+                                    <span class="flex flex-col h-full gap-1 p-1 ltr:border-r rtl:border-l dark:border-green-500/50">
+                                        <span class="block p-1 px-2 mb-2 rounded bg-green-100 dark:bg-green-500/20"></span>
+                                        <span class="block p-1 px-2 pb-0 bg-green-100 dark:bg-green-500/20"></span>
+                                        <span class="block p-1 px-2 pb-0 bg-green-100 dark:bg-green-500/20"></span>
+                                        <span class="block p-1 px-2 pb-0 bg-green-100 dark:bg-green-500/20"></span>
+                                    </span>
+                                </span>
+                                <span class="grow">
+                                    <span class="flex flex-col h-full">
+                                        <span class="block h-3 bg-green-100 dark:bg-green-500/20"></span>
+                                        <span class="block h-3 mt-auto bg-green-100 dark:bg-green-500/20"></span>
+                                    </span>
+                                </span>
+                            </span>
+                        </label>
+                        <h5 class="mt-2 text-center text-15">Vertical</h5>
+                    </div>
+
+                    <div class="relative">
+                        <input name="data-layout" id="horizontal"
+                               class="absolute w-4 h-4 border rounded-full appearance-none cursor-pointer right-2 top-2 vertical-menu-btn bg-green-100 border-green-300 checked:bg-green-500 checked:border-custom-500 dark:border-green-500/50"
+                               type="radio" value="horizontal">
+                        <label class="block w-full h-24 p-0 overflow-hidden border rounded-lg cursor-pointer border-green-200 dark:border-green-500/50"
+                               for="horizontal">
+                            <span class="flex flex-col h-full gap-1">
+                                <span class="flex items-center gap-1 p-1 bg-green-100 dark:bg-green-500/20">
+                                    <span class="block p-1 ml-1 bg-white rounded dark:bg-green-500/20"></span>
+                                    <span class="block p-1 px-2 pb-0 bg-white ms-auto dark:bg-green-500/20"></span>
+                                    <span class="block p-1 px-2 pb-0 bg-white dark:bg-green-500/20"></span>
+                                </span>
+                                <span class="block p-1 bg-green-100 dark:bg-green-500/20"></span>
+                                <span class="block p-1 mt-auto bg-green-100 dark:bg-green-500/20"></span>
+                            </span>
+                        </label>
+                        <h5 class="mt-2 text-center text-15">Horizontal</h5>
+                    </div>
+                </div>
+            </div>
+            <div class="mt-6">
+                <!-- data-mode="" -->
+                <h5 class="mb-3 underline capitalize text-15">Layouts Mode</h5>
+                <div class="flex gap-3">
+
+                    <button type="button" name="data-mode" value="light" id="data-mode-light"
+                            class="transition-all duration-200 ease-linear bg-white border-dashed text-green-500 btn border-green-200 hover:text-green-500 hover:bg-green-50 hover:border-green-200 focus:text-green-500 focus:bg-green-50 focus:border-green-200 [&.active]:text-green-500 [&.active]:bg-green-50 [&.active]:border-green-200  dark:border-green-500/50  dark:bg-green-500/20 dark:[&.active]:border-green-500 dark:[&.active]:bg-green-500 dark:[&.active]:text-white">
+                        Light Mode
+                    </button>
+                    <button type="button" name="data-mode" value="dark" id="data-mode-dark"
+                            class="transition-all duration-200 ease-linear bg-white border-dashed text-green-500 btn border-green-200 hover:text-green-500 hover:bg-green-50 hover:border-green-200 focus:text-green-500 focus:bg-green-50 focus:border-green-200 [&.active]:text-green-500 [&.active]:bg-green-50 [&.active]:border-green-200  dark:border-green-500/50  dark:bg-green-500/20 dark:[&.active]:border-green-500 dark:[&.active]:bg-green-500 dark:[&.active]:text-white">
+                        Dark Mode
+                    </button>
+                </div>
+            </div>
+            <!-- sidebar color horizontal hidden -->
+            <div class="mt-6 group-data-[layout=horizontal]:hidden">
+                <!-- data-mode="" -->
+                <h5 class="mb-3 underline capitalize text-15">Sidebar Color</h5>
+                <div class="flex gap-3">
+
+                    <button type="button" name="data-sidebar-color" id="data-sidebar-light" value="light"
+                            class="transition-all duration-200 ease-linear bg-white border-dashed text-green-500 btn border-green-200 hover:text-green-500 hover:bg-green-50 hover:border-green-200 focus:text-green-500 focus:bg-green-50 focus:border-green-200 [&.active]:text-green-500 [&.active]:bg-green-50 [&.active]:border-green-200  dark:border-green-500/50  dark:bg-green-500/20 dark:[&.active]:border-green-500 dark:[&.active]:bg-green-500 dark:[&.active]:text-white">
+                        Light
+                    </button>
+
+                    <button type="button" name="data-sidebar-color" id="data-sidebar-dark" value="dark"
+                            class="transition-all duration-200 ease-linear bg-white border-dashed text-green-500 btn border-green-200 hover:text-green-500 hover:bg-green-50 hover:border-green-200 focus:text-green-500 focus:bg-green-50 focus:border-green-200 [&.active]:text-green-500 [&.active]:bg-green-50 [&.active]:border-green-200  dark:border-green-500/50  dark:bg-green-500/20 dark:[&.active]:border-green-500 dark:[&.active]:bg-green-500 dark:[&.active]:text-white ">
+                        Dark
+                    </button>
+
+                </div>
+            </div>
+            <!-- sidebar size horizontal hidden -->
+            <div class="mt-6 group-data-[layout=horizontal]:hidden">
+                <!-- data-sidebar-size="" -->
+                <h5 class="mb-3 underline capitalize text-15">Sidebar Size</h5>
+                <div class="flex flex-wrap gap-3">
+                    <button type="button" name="data-sidebar-size" id="sidebar-size-lg" value="lg"
+                            class="transition-all duration-200 ease-linear bg-white border-dashed text-green-500 btn border-green-200 hover:text-green-500 hover:bg-green-50 hover:border-green-200 focus:text-green-500 focus:bg-green-50 focus:border-green-200 [&.active]:text-green-500 [&.active]:bg-green-50 [&.active]:border-green-200  dark:border-green-500/50  dark:bg-green-500/20 dark:[&.active]:border-green-500 dark:[&.active]:bg-green-500 dark:[&.active]:text-white">
+                        Default
+                    </button>
+                    <button type="button" name="data-sidebar-size" id="sidebar-size-md" value="md"
+                            class="transition-all duration-200 ease-linear bg-white border-dashed text-green-500 btn border-green-200 hover:text-green-500 hover:bg-green-50 hover:border-green-200 focus:text-green-500 focus:bg-green-50 focus:border-green-200 [&.active]:text-green-500 [&.active]:bg-green-50 [&.active]:border-green-200  dark:border-green-500/50  dark:bg-green-500/20 dark:[&.active]:border-green-500 dark:[&.active]:bg-green-500 dark:[&.active]:text-white">
+                        Compact
+                    </button>
+                    <button type="button" name="data-sidebar-size" id="sidebar-size-sm" value="sm"
+                            class="transition-all duration-200 ease-linear bg-white border-dashed text-green-500 btn border-green-200 hover:text-green-500 hover:bg-green-50 hover:border-green-200 focus:text-green-500 focus:bg-green-50 focus:border-green-200 [&.active]:text-green-500 [&.active]:bg-green-50 [&.active]:border-green-200  dark:border-green-500/50  dark:bg-green-500/20 dark:[&.active]:border-green-500 dark:[&.active]:bg-green-500 dark:[&.active]:text-white">
+                        Small (Icon)
+                    </button>
+                </div>
+            </div>
+            <div class="mt-6">
+                <!-- data-sidebar-size="" -->
+                <h5 class="mb-3 underline capitalize text-15">Topbar Color</h5>
+                <div class="flex flex-wrap gap-3">
+                    <button type="button" name="data-topbar" id="topbar-light" value="light"
+                            class="transition-all duration-200 ease-linear bg-white border-dashed text-green-500 btn border-green-200 hover:text-green-500 hover:bg-green-50 hover:border-green-200 focus:text-green-500 focus:bg-green-50 focus:border-green-200 [&.active]:text-green-500 [&.active]:bg-green-50 [&.active]:border-green-200  dark:border-green-500/50  dark:bg-green-500/20 dark:[&.active]:border-green-500 dark:[&.active]:bg-green-500 dark:[&.active]:text-white">
+                        light
+                    </button>
+                    <button type="button" name="data-topbar" id="topbar-dark" value="dark"
+                            class="transition-all duration-200 ease-linear bg-white border-dashed text-green-500 btn border-green-200 hover:text-green-500 hover:bg-green-50 hover:border-green-200 focus:text-green-500 focus:bg-green-50 focus:border-green-200 [&.active]:text-green-500 [&.active]:bg-green-50 [&.active]:border-green-200  dark:border-green-500/50  dark:bg-green-500/20 dark:[&.active]:border-green-500 dark:[&.active]:bg-green-500 dark:[&.active]:text-white">
+                        dark
+                    </button>
+                </div>
+            </div>
+            <div class="mt-6">
+                <!-- dir="ltr" -->
+                <h5 class="mb-3 underline capitalize text-15">Direction</h5>
+                <div class="flex flex-wrap gap-3">
+                    <button type="button" name="dir" value="ltr" id="data-mode-ltr"
+                            class="transition-all duration-200 ease-linear bg-white border-dashed text-green-500 btn border-green-200 hover:text-green-500 hover:bg-green-50 hover:border-green-200 focus:text-green-500 focus:bg-green-50 focus:border-green-200 [&.active]:text-green-500 [&.active]:bg-green-50 [&.active]:border-green-200  dark:border-green-500/50  dark:bg-green-500/20 dark:[&.active]:border-green-500 dark:[&.active]:bg-green-500 dark:[&.active]:text-white">
+                        LTR Mode
+                    </button>
+                    <button type="button" name="dir" value="rtl" id="data-mode-rtl"
+                            class="transition-all duration-200 ease-linear bg-white border-dashed text-green-500 btn border-green-200 hover:text-green-500 hover:bg-green-50 hover:border-green-200 focus:text-green-500 focus:bg-green-50 focus:border-green-200 [&.active]:text-green-500 [&.active]:bg-green-50 [&.active]:border-green-200  dark:border-green-500/50  dark:bg-green-500/20 dark:[&.active]:border-green-500 dark:[&.active]:bg-green-500 dark:[&.active]:text-white">
+                        RTL Mode
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- remmove code  -->
+
+    </div>
+</div>
+<!-- </div> -->
+<script src="{% static 'assets/libs/jquery/jquery.min.js' %}"></script>
+<script src="{% static 'assets/libs/simplebar/simplebar.min.js' %}"></script>
+<script src="{% static 'assets/libs/metismenujs/metismenujs.min.js' %}"></script>
+<script src="{% static 'assets/libs/@popperjs/core/umd/popper.min.js' %}"></script>
+<script src="{% static 'assets/js/pages/plugins.js' %}"></script>
+<script src="{% static 'assets/libs/apexcharts/apexcharts.min.js' %}"></script>
+<script src="{% static 'assets/js/pages/dashboard-blog.init.js' %}"></script>
+<script src="{% static 'assets/js/pages/nav&tabs.js' %}"></script>
+<!-- App js -->
+<script src="{% static 'assets/js/app.js' %}"></script>
+
+</body>
+
+</html>

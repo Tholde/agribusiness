@@ -1,0 +1,126 @@
+﻿{% extends 'admin/base.html' %}
+{% block content %}
+    {% load static %}
+    <div class="relative min-h-screen group-data-[sidebar-size=sm]:min-h-[1500px]">
+
+        <div class="group-data-[sidebar-size=lg]:ltr:lg:ml-vertical-menu group-data-[sidebar-size=lg]:rtl:lg:mr-vertical-menu group-data-[sidebar-size=md]:ltr:ml-vertical-menu-md group-data-[sidebar-size=md]:rtl:mr-vertical-menu-md group-data-[sidebar-size=sm]:ltr:lg:ml-vertical-menu-sm group-data-[sidebar-size=sm]:lg:rtl:mr-vertical-menu-sm pt-[calc(theme('spacing.header')_*_1)] pb-[calc(theme('spacing.header')_*_1)] px-6 group-data-[layout=horizontal]:!mx-auto group-data-[layout=horizontal]:max-w-screen-2xl  group-data-[layout=horizontal]:lg:pt-[calc(theme('spacing.header')_*_1.75)] ">
+            <div class="container-fluid">
+
+                <div class="md:flex items-center justify-between pt-6 pb-5">
+                    <div>
+                        <h6 class="mb-0 text-16 uppercase font-semibold dark:text-white">Messages des utilisateurs</h6>
+                    </div>
+                    <div class="shrink-0">
+                        <ul class="mb-0 flex items-center gap-4 text-[13px] mt-2 md:mt-0">
+                            <li class="before:content-['/'] before:absolute ltr:before:-right-1 rtl:before:-left-2 before:text-gray-600 before:text-[9px] before:top-0 before:bottom-0 before:flex before:items-center relative pr-3 inline-block">
+                                <a href="#!" class="text-gray-800 dark:text-white">ADMIN</a></li>
+                            <li class="text-gray-600 dark:text-zink-200">Probleme</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="card dark:bg-zink-700">
+                    <div class="card-body">
+                        <div class="grid grid-cols-12">
+                            <div class="col-span-12">
+                                <div class="md:flex justify-between space-y-2 md:space-y-0">
+                                    <div class="relative">
+                                        <i class="bx bx-search-alt text-16 text-zink-600  dark:text-zink-200 absolute top-3 ltr:left-4 rtl:right-4 transform"></i>
+                                        <input class="w-full border  rounded-full placeholder:text-gray-600 dark:outline-none dark:border-transparent dark:text-zink-200 dark:placeholder:text-zink-200 dark:bg-zink-50 ltr:pl-10 rtl:pr-10 py-2 p-3 border-gray-400 placeholder:text-[13px] focus:border focus:border-gray-400 focus:ring-0 focus:outline-none text-gray-700"
+                                               type="search" placeholder="Search..." id="example-search-input">
+                                    </div>
+                                </div>
+                                <div class="my-4 overflow-x-auto">
+                                    <table class="table w-full datatable whitespace-nowrap dt-responsive nowrap border-spacing-y-1.5 border-collapse text-gray-800 ">
+                                        <thead>
+                                        <tr class="bg-gray-50 dark:bg-zink-50 dark:text-zink-200 border-b border-gray-400/50 dark:border-zink-50">
+                                            <th class="p-3 font-semibold text-13 ltr:text-left rtl:text-right ">#</th>
+                                            <th class="p-3 font-semibold text-13 ltr:text-left rtl:text-right ">Nom et
+                                                Prénom
+                                            </th>
+                                            <th class="p-3 font-semibold text-13 ltr:text-left rtl:text-right ">Message
+                                            </th>
+                                            <th class="p-3 font-semibold text-13 ltr:text-left rtl:text-right "
+                                                style="width: 120px;">Action
+                                            </th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        {% if problems %}
+                                            {% for vsr in problems %}
+                                                <tr class="bg-white hover:bg-gray-50 dark:bg-zink-50 border-b border-gray-300 dark:bg-transparent dark:border-zink-50">
+                                                    <td class="p-3">
+                                                        {{ forloop.counter }}
+                                                    </td>
+                                                    <th scope="row"
+                                                        class="p-3 text-13 ltr:text-left rtl:text-right font-normal  whitespace-nowrap text-gray-600 dark:text-zink-200">
+                                                        <p> {{ vsr.user.first_name }}&nbsp;{{ vsr.user.last_name }}</p>
+                                                    </th>
+                                                    <th scope="row" class="ltr:text-left rtl:text-right ">
+                                                        <p>{{ vsr.problem }}</p>
+                                                    </th>
+                                                    <th scope="row"
+                                                        class="p-3 text-13 ltr:text-left rtl:text-right font-normal  whitespace-nowrap text-gray-600 dark:text-zink-200">
+                                                        <p> {{ vsr.date|date:"Y-N-d, h:i:s A" }} </p>
+                                                    </th>
+                                                    <th scope="row"
+                                                        class="p-3 text-13 ltr:text-left rtl:text-right font-normal  whitespace-nowrap text-gray-600 dark:text-zink-200">
+                                                        <div class="ltr:text-left rtl:text-right flex items-center">
+                                                            <a href="{% url 'send_answer_contact_us' vsr.id %}">
+                                                                <i class="bx bx-message-square-dots text-xl text-gray-700 dark:text-zink-200"></i>
+                                                            </a>
+                                                            <a data-modal-target="defaultModal" type="button"
+                                                               href="javascript:void(0);"
+                                                               class="bg-red-50 w-6 h-6 rounded flex justify-center items-center dark:bg-red-500/10">
+                                                                <i class="mdi mdi-delete-outline text-red-500 "></i></a>
+
+                                                            <div id="defaultModal" modal-center=""
+                                                                 class="fixed flex flex-col top-1/2 left-1/2  -translate-x-1/2 -translate-y-1/2 whitespace-normal   w-full  md:w-72 z-drawer show hidden">
+                                                                <div class="w-full  bg-white shadow rounded-md dark:bg-zink-700 dark:text-zink-200 dark:shadow">
+                                                                    <div class="flex items-center justify-end p-4 ">
+                                                                        <button data-modal-close="defaultModal"><i
+                                                                                class="mdi mdi-close noti-icon text-16"></i>
+                                                                        </button>
+                                                                    </div>
+                                                                    <div class="h-full p-4 pt-0">
+                                                                        <p class="bg-blue-50 mb-6 mx-auto w-12 h-12 rounded flex justify-center items-center dark:bg-blue-500/10">
+                                                                            <i class="mdi mdi-trash-can-outline text-xl text-blue-500 "></i>
+                                                                        </p>
+                                                                        <p class="mb-2 text-lg text-center text-gray-600 dark:text-zink-200">
+                                                                            Vous êtes sur de supprimer le message de
+                                                                            {{ vsr.user.first_name }}.</p>
+                                                                    </div>
+                                                                    <div class="flex justify-center space-x-2 pb-12">
+                                                                        <a href="{% url 'delete_contact_us' vsr.id %}"
+                                                                           type="button"
+                                                                           class="text-white transition-all duration-300 ease-linear bg-red-500 border-red-500 hover:bg-red-600 hover:border-red-600 hover:text-white active:bg-red-600 active:border-red-600 active:text-white focus:bg-red-600 focus:border-red-600 focus:text-white focus:ring focus:ring-red-500/30 btn">
+                                                                            Supprimer
+                                                                        </a>
+                                                                        <button type="button"
+                                                                                class="text-white transition-all duration-300 ease-linear bg-gray-600 border-gray-600 hover:bg-gray-700 hover:border-gray-700 hover:text-white active:bg-gray-700 active:border-gray-700 active:text-white focus:bg-gray-700 focus:border-gray-700 focus:text-white focus:ring focus:ring-gray-700/30 btn">
+                                                                            Annuler
+                                                                        </button>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </th>
+                                                </tr>
+                                            {% endfor %}
+                                        {% endif %}
+                                        </tbody>
+                                    </table>
+                                </div>
+                                <!-- end table -->
+                            </div>
+                        </div>
+                        <!-- end grid -->
+                    </div>
+                </div>
+
+            </div>
+            <!-- container-fluid -->
+        </div>
+        <!-- End Page-content -->
+        {% include 'admin/footer.html' %}
+    </div>
+{% endblock %}

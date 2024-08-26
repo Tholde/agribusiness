@@ -1,0 +1,132 @@
+{% extends 'fournisseur/base.html' %}
+{% load static %}
+{% block content %}
+    <div class="relative min-h-screen group-data-[sidebar-size=sm]:min-h-[1500px]">
+
+        <div class="group-data-[sidebar-size=lg]:ltr:lg:ml-vertical-menu group-data-[sidebar-size=lg]:rtl:lg:mr-vertical-menu group-data-[sidebar-size=md]:ltr:ml-vertical-menu-md group-data-[sidebar-size=md]:rtl:mr-vertical-menu-md group-data-[sidebar-size=sm]:ltr:lg:ml-vertical-menu-sm group-data-[sidebar-size=sm]:lg:rtl:mr-vertical-menu-sm pt-[calc(theme('spacing.header')_*_1)] pb-[calc(theme('spacing.header')_*_1)] px-6 group-data-[layout=horizontal]:!mx-auto group-data-[layout=horizontal]:max-w-screen-2xl  group-data-[layout=horizontal]:lg:pt-[calc(theme('spacing.header')_*_1.75)] ">
+            <div class="container-fluid">
+
+                <div class="md:flex items-center justify-between pt-6 pb-5">
+                    <div>
+                        <h6 class="mb-0 text-16 uppercase font-semibold dark:text-white">Vente</h6>
+                    </div>
+                    <div class="shrink-0">
+                        <ul class="mb-0 flex items-center gap-4 text-[13px] mt-2 md:mt-0">
+                            <li class="before:content-['/'] before:absolute ltr:before:-right-1 rtl:before:-left-2 before:text-gray-600 before:text-[9px] before:top-0 before:bottom-0 before:flex before:items-center relative pr-3 inline-block">
+                                <a href="#!" class="text-gray-800 dark:text-white">Blog</a></li>
+                            <li class="text-gray-600 dark:text-zink-200">Vente</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class=" grid grid-cols-1">
+                    <div class="grid grid-cols-12 gap-x-6">
+                        <div class="col-span-12 md:col-span-8 2xl:col-span-9">
+                            <div class="card dark:bg-zink-700">
+                                <div class="pb-5">
+                                    <div class="nav-tabs custom-tab pt-2">
+                                        <ul class="flex justify-center border-b-2 border-gray-300 dark:border-zink-50 text-center text-gray-800">
+                                            <li>
+                                                <a href="#!"
+                                                   class="dark:text-white w-full px-4 py-2.5 block hover:text-green-500 border-b-2 border-gray-300 active dark:border-zink-50 font-medium"
+                                                   data-tw-toggle="tab" data-tw-target="custome-home">Toutes Ventes</a>
+                                            </li>
+
+                                        </ul>
+                                        <div class="max-w-3xl mx-auto tab-content">
+                                            <div class="tab-pane" id="custome-home">
+                                                <div class="sm:flex mt-6 space-y-5 sm:space-y-0 justify-between pb-5 border-b dark:border-zink-50 dark:text-white border-gray-300">
+                                                    <h5 class="text-16 font-medium text-gray-900 dark:text-white">Liste
+                                                        des ventes </h5>
+                                                    <div class="flex flex-wrap items-center gap-2 mt-5 lg:mt-0 lg:justify-end">
+                                                        <div>
+                                                            <ul class="flex items-center gap-x-3 ">
+                                                                <div class="flex">
+                                                                    <li class="nav-item">
+                                                                        <a href="javascript:void(0);"
+                                                                           class="dark:text-white nav-link active py-2 px-4 bg-green-500 rounded text-white text-16"
+                                                                           href="" data-bs-toggle="tooltip"
+                                                                           data-bs-placement="top" aria-label="Grid">
+                                                                            <i class="text-white bx bx-grid-alt"></i>
+                                                                        </a>
+                                                                    </li>
+
+                                                                </div>
+                                                            </ul>
+                                                        </div>
+
+                                                    </div>
+                                                </div>
+                                                {% if products %}
+                                                    {% for prod in products %}
+                                                        <div class="grid grid-cols-12 gap-x-6 mt-6">
+                                                            <div class="col-span-12 md:col-span-6">
+                                                                <div class="card border border-gray-400/50 p-1 rounded dark:border-zink-50 dark:bg-transparent">
+                                                                    <div class="card-body !p-3">
+                                                                        <h5 class="mb-1"><a href="#"
+                                                                                            class="text-gray-900 text-15 dark:text-white">{{ prod.name }}</a>
+                                                                        </h5>
+                                                                        <p class="text text-gray-600 text-13 dark:text-zink-200">
+                                                                            {{ prod.date_created|date:"Y-N-d, h:i:s A" }}</p>
+                                                                    </div>
+                                                                    <img src="{{ prod.image.url }}" alt=""
+                                                                         class="p-1 border border-gray-300 dark:border-zink-50 bg-gray-50 dark:bg-zink-700 rounded img-fluid w-full">
+                                                                    <div class="card-body">
+                                                                        <p class="mb-0 text-gray-700 mt-1 text-13  dark:text-zink-200">{{ prod.description }}</p>
+                                                                        <div class="mt-3">
+                                                                            <a href="#"
+                                                                               class="align-middle text-13 text-green-500  dark:text-green-500">
+                                                                                <button type="button"
+                                                                                        class="text-white transition-all duration-300 ease-linear bg-green-500 border-green-500 hover:bg-green-600 hover:border-green-600 hover:text-white active:bg-green-600 active:border-green-600 active:text-white focus:bg-green-600 focus:border-green-600 focus:text-white focus:ring focus:ring-green-500/30 btn">
+                                                                                    <i class="align-middle bx bxs-cart-add font-size-16 me-2"></i>Commander
+                                                                                </button>
+                                                                            </a>
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    {% endfor %}
+                                                {% endif %}
+                                                <hr class=" text-gray-800 my-12 dark:border-zink-50">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-span-12 md:col-span-4 2xl:col-span-3">
+                            <div class="card dark:bg-zink-700 dark:border-zink-50">
+                                <div class="card-body space-y-6">
+
+                                    <div>
+                                        <h5 class="text-13 font-normal text-gray-600 mb-3 dark:text-white">Toutes
+                                            Ventes</h5>
+                                        <hr class="my-4 dark:border-zink-50">
+                                        <ul class="list-unstyled font-medium px-2">
+                                            {% if products %}
+                                                    {% for prod in products %}
+                                            <li><a href=""
+                                                   class="text-gray-600 text-13 dark:text-zink-200 block py-2 dark:border-zink-50 border-b border-gray-50"><i
+                                                    class="mdi mdi-chevron-right ltr:me-1.5 rtl:ms-1.5"></i>{{ prod.name }}</a>
+                                            </li>
+                                            {% endfor %}
+                                                {% endif %}
+                                        </ul>
+                                    </div>
+
+
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+                </div>
+
+            </div>
+            <!-- container-fluid -->
+        </div>
+        <!-- End Page-content -->
+        {% include 'fournisseur/footer.html' %}
+    </div>
+{% endblock %}

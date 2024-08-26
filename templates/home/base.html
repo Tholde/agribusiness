@@ -1,0 +1,253 @@
+{% load static %}
+<!doctype html>
+<html class="no-js" lang="">
+
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <title>Agribusiness by Tholde</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="shortcut icon" type="image/x-icon" href="{% static 'icon.png' %}">
+    <!-- Place favicon.ico in the root directory -->
+
+    <!-- CSS here -->
+    <link rel="stylesheet" href="{% static 'asset/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'asset/css/owl.carousel.min.css' %}">
+    <link rel="stylesheet" href="{% static 'asset/css/animate.css' %}">
+    <link rel="stylesheet" href="{% static 'asset/css/magnific-popup.css' %}">
+    <link rel="stylesheet" href="{% static 'asset/css/all.min.css' %}">
+    <link rel="stylesheet" href="{% static 'asset/css/flaticon.css' %}">
+    <link rel="stylesheet" href="{% static 'asset/css/font.css' %}">
+    <link rel="stylesheet" href="{% static 'asset/css/themify-icons.css' %}">
+    <link rel="stylesheet" href="{% static 'asset/css/meanmenu.css' %}">
+    <link rel="stylesheet" href="{% static 'asset/css/metisMenu.css' %}">
+    <link rel="stylesheet" href="{% static 'asset/css/nice-select.css' %}">
+    <link rel="stylesheet" href="{% static 'asset/css/slick.css' %}">
+    <link rel="stylesheet" href="{% static 'asset/css/main.css' %}">
+</head>
+
+<body>
+<!-- preloader -->
+<div id="preloader">
+    <div class="preloader">
+        <span></span>
+        <span></span>
+    </div>
+</div>
+
+<!-- header-area start -->
+<header id="top-menu">
+    <div class="main-header-area main-header-area2">
+        <div class="container-fluid">
+            <div class="row align-items-center">
+                <div class="col-xl-2 col-lg-3 col-md-4 col-6">
+                    <div class="logo logo-2 pl-150">
+                        <a href="{% url 'index' %}"><img src="{% static 'asset/agribusiness.png' %}" width="160px"
+                                                         height="50px" alt=""></a>
+                    </div>
+                </div>
+                <div class="col-xl-8 col-lg-8 col-md-4 d-none d-md-block">
+                    <div class="main-menu-area text-center">
+                        <div class="main-menu menu-02 d-none d-lg-inline-block d-lg-none">
+                            <nav>
+                                <ul>
+                                    <li>
+                                        <a href="{% url 'index' %}">Accueil</a>
+                                    </li>
+                                    <li><a href="{% url 'about' %}">Apropos</a></li>
+                                    <li><a href="{% url 'project_page' %}">Projects</a></li>
+                                    <li><a href="{% url 'formation' %}">Formation</a></li>
+{#                                    <li><a href="{% url 'temoignage' %}">Temoignage</a></li>#}
+                                    <li><a href="{% url 'shop_page' %}">Vente</a></li>
+                                    <li><a href="{% url 'contact_us' %}">Contacter</a>
+                                    </li>
+                                </ul>
+                            </nav>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-xl-2 col-lg-1 col-md-4 col-6">
+                    <div class="hamburger-menu hamburger-menu2 text-right pr-55">
+                        <a href="javascript:void(0);">
+                            <i class="far fa-bars"></i>
+                        </a>
+                    </div>
+                    <div class="side-nav2 d-inline-block pr-135">
+                        <a class="theme_btn" href="{% url 'login' %}">Connexion</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</header>
+<!-- header-area end -->
+<aside class="slide-bar">
+    <div class="close-mobile-menu">
+        <a href="javascript:void(0);"><i class="fas fa-times"></i></a>
+    </div>
+
+    <!-- offset-sidebar start -->
+    <div class="offset-sidebar">
+        <div class="offset-widget offset-logo mb-30">
+            <a href="index.html">
+                <img src="{% static 'asset/agribusiness.png' %}" width="160px"
+                     height="50px" alt="">
+            </a>
+        </div>
+        <div class="offset-widget mb-30">
+            <div class="info-widget">
+                <h4 class="offset-title mb-20">Adresse du Bureau</h4>
+                <p>
+                    Jerosalema Building, Sambaina Gare, Antsirabe MG
+                </p>
+            </div>
+        </div>
+        <div class="offset-widget mb-30">
+            <div class="info-widget">
+                <h4 class="offset-title">Numero Téléphone</h4>
+                <p> +261 34 54 542 80 </p>
+                <p> +261 32 61 109 49 </p>
+            </div>
+        </div>
+        <div class="offset-widget mb-30">
+            <div class="info-widget">
+                <h4 class="offset-title">Adresse Email</h4>
+                <p><a href="/cdn-cgi/l/email-protection" class="__cf_email__">rahalahifaliako.t@zurcher.edu.mg</a></p>
+            </div>
+        </div>
+        <div class="offset-widget mb-30">
+            <div class="instagram">
+                <a href="#">
+                    <img src="{% static 'asset/img/product/thumb/off1.png' %}" alt="cat">
+                </a>
+                <a href="#">
+                    <img src="{% static 'asset/img/product/thumb/off2.png' %}" alt="cat">
+                </a>
+                <a href="#">
+                    <img src="{% static 'asset/img/product/thumb/off3.png' %}" alt="cat">
+                </a>
+                <a href="#">
+                    <img src="{% static 'asset/img/product/thumb/off4.png' %}" alt="cat">
+                </a>
+                <a href="#">
+                    <img src="{% static 'asset/img/product/thumb/off5.png' %}" alt="cat">
+                </a>
+                <a href="#">
+                    <img src="{% static 'asset/img/product/thumb/off6.png' %}" alt="cat">
+                </a>
+            </div>
+        </div>
+    </div>
+    <!-- offset-sidebar end -->
+
+    <!-- side-mobile-menu start -->
+    <nav class="side-mobile-menu">
+        <ul id="mobile-menu-active">
+            <li>
+                <a href="{% url 'index' %}">Accueil</a>
+            </li>
+            <li><a href="{% url 'about' %}">Apropos</a></li>
+            <li><a href="{% url 'project_page' %}">Projects</a></li>
+            <li><a href="{% url 'formation' %}">Formation</a></li>
+{#            <li><a href="{% url 'temoignage' %}">Temoignage</a></li>#}
+            <li><a href="{% url 'shop_page' %}">Vente</a></li>
+            <li><a href="{% url 'contact_us' %}">Contacter</a>
+            </li>
+        </ul>
+    </nav>
+    <!-- side-mobile-menu end -->
+</aside>
+<div class="body-overlay"></div>
+<!-- slide-bar end -->
+{% block content %}
+
+{% endblock content %}
+<!--footer-area start-->
+<footer class="footer-area pos-rel green-bg pt-125">
+    <div class="fot-shape pos-abl">
+        <img src="{% static 'asset/img/icon/leaf11.png' %}" alt="">
+    </div>
+    <div class="fot-shape-two pos-abl">
+        <img src="{% static 'asset/img/icon/leaf12.png' %}" alt="">
+    </div>
+    <a href="#top-menu" class="scroll-target"><i class="far fa-angle-up"></i></a>
+    <!--scroll-target-btn-->
+    <div class="container">
+        <div class="row border-bottom1 pb-40">
+            <div class="col-xl-3 col-lg-3 col-md-6">
+                <div class="footer__widget mb-30">
+                    <a href="#" class="footer-logo mb-25">
+                        <img src="{% static 'agribusiness.png' %}" width="160px" height="50px" alt="">
+                    </a>
+                    <p>Agribusiness désigne l’ensemble des activités économiques liées à la production, à la
+                        transformation et à la commercialisation des produits agricoles. </p>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-3 col-md-6">
+                <div class="footer__widget mb-30">
+                    <h5 class="mb-20">Contact</h5>
+                    <p>Lorsque vous besoin d'aide. Veillez contacter</p>
+                    <a class="call" href="#"><i class="fas fa-phone"></i> +261 34 54 542 80</a><br>
+                    <a class="call" href="#"><i class="fas fa-phone"></i> +261 32 61 109 49</a><br>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-3 col-md-6">
+                <div class="footer__widget mb-30">
+                    <h5 class="mb-20">Company</h5>
+                    <p>Ambanimaso Mamiratra</p>
+                    <a class="call" href="#"><i class="fas fa-mail-bulk"></i>
+                        <span class="__cf_email__" data-cfemail="">rahalahifaliako.t@zurcher.edu.mg</span></a>
+                </div>
+            </div>
+            <div class="col-xl-3 col-lg-3 col-md-6">
+                <div class="footer__widget mb-30">
+                    <h5 class="mb-20">Adresse</h5>
+                    <p>Adresse local de l'administrateur</p>
+                    <a class="call" href="#"><i class="fas fa-phone"></i> Jerosalema, Sambaina Gare, Antsirabe 2 MG</a>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-xl-12">
+                <div class="copyright text-center green-soft-bg pt-30 pb-10">
+                    <p>© Copyright
+                        <script>document.write(new Date().getFullYear())</script>
+                        <a href="#">&nbsp;Tholde Rftn</a>. All rights reserved.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </div>
+</footer>
+<!--footer-area end-->
+
+
+<!-- JS here -->
+<script data-cfasync="false" src="{% static 'asset/js/email-decode.min.js' %}"></script>
+<script src="{% static 'asset/js/vendor/modernizr-3.5.0.min.js' %}"></script>
+<script src="{% static 'asset/js/vendor/jquery-1.12.4.min.js' %}"></script>
+<script src="{% static 'asset/js/popper.min.js' %}"></script>
+<script src="{% static 'asset/js/bootstrap.min.js' %}"></script>
+<script src="{% static 'asset/js/owl.carousel.min.js' %}"></script>
+<script src="{% static 'asset/js/isotope.pkgd.min.js' %}"></script>
+<script src="{% static 'asset/js/one-page-nav-min.js' %}"></script>
+<script src="{% static 'asset/js/slick.min.js' %}"></script>
+<script src="{% static 'asset/js/jquery.meanmenu.min.js' %}"></script>
+<script src="{% static 'asset/js/metisMenu.min.js' %}"></script>
+<script src="{% static 'asset/js/jquery.nice-select.js' %}"></script>
+<script src="{% static 'asset/js/ajax-form.js' %}"></script>
+<script src="{% static 'asset/js/wow.min.js' %}"></script>
+<script src="{% static 'asset/js/jquery.counterup.min.js' %}"></script>
+<script src="{% static 'asset/js/waypoints.min.js' %}"></script>
+<script src="{% static 'asset/js/jquery.scrollUp.min.js' %}"></script>
+<script src="{% static 'asset/js/imagesloaded.pkgd.min.js' %}"></script>
+<script src="{% static 'asset/js/jquery.magnific-popup.min.js' %}"></script>
+<script src="{% static 'asset/js/jquery.easypiechart.js' %}"></script>
+<script src="{% static 'asset/js/plugins.js' %}"></script>
+<script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDC3Ip9iVC0nIxC6V14CKLQ1HZNF_65qEQ "></script>
+<script src="{% static 'asset/js/main.js' %}"></script>
+</body>
+
+</html>

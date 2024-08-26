@@ -1,0 +1,111 @@
+﻿{% extends 'home/base.html' %}
+{% load static %}
+{% block content %}
+    <main>
+        <!--page-title-area start-->
+        <section class="page-title-area pos-rel"
+                 style="background-image: url({% static 'asset/img/bg/page-banner.jpg' %});">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-8 offset-xl-2">
+                        <div class="page-title text-center pt-180">
+                            <h2>Vente Groupée</h2>
+                            <div class="breadcrumb-list text-center">
+                                <ul>
+                                    <li><a href="#">Accueil</a></li>
+                                    <li>Details des Ventes</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--page-title-area start-->
+        <!--product-details-area start-->
+        {% if one_product %}
+            {% for prod in one_product %}
+            <section class="product-details-area pt-130 pb-30">
+                <div class="container">
+                    <div class="row align-items-center">
+                        <div class="col-xl-7 col-lg-7 col-12">
+                            <div class="product-details-img mb-30">
+                                <div class="tab-content" id="myTabContent2">
+                                    <div class="tab-pane fade show active" id="home" role="tabpanel">
+                                        <div class="product-large-img w-50 h-50">
+                                            <img src="{{ prod.image.url }}" class="w-100 h-100" alt="">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-xl-5 col-lg-5 col-12">
+                            <div class="product-details mb-25 pl-30 pr-140">
+                                <h3 class="product-details-title">{{ prod.name }}</h3>
+                                <div class="product-details-rating mb-10">
+                                    <a href="#"><i class="fas fa-star"></i></a>
+                                    <a href="#"><i class="fas fa-star"></i></a>
+                                    <a href="#"><i class="fas fa-star"></i></a>
+                                    <a href="#"><i class="fas fa-star"></i></a>
+                                    <a href="#"><i class="fas fa-star"></i></a>
+                                </div>
+                                <span class="mb-30">{{ prod.price }} Ar</span>
+                                <p class="mb-25">{{ prod.description }}</p>
+                                <div class="product-details-action mb-30">
+                                    <a href="{% url 'login' %}">
+                                        <button class="btn" type="submit">Commander</button>
+                                    </a>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+            {% endfor %}
+        {% endif %}
+        <!--product-details-area start-->
+        <!--product-desc-area start-->
+        <section class="product-desc-area pb-105">
+            <div class="container">
+            </div>
+        </section>
+        <!--product-desc-area end-->
+        <!--feature-product-area start-->
+        <section class="feature-product-area pt-120 pb-95">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-8 offset-xl-2">
+                        <div class="section-title text-center mb-80">
+                            <span class="mb-15">Notre Vente Groupée</span>
+                            <h2 class="mb-30">Les Produits plus récent</h2>
+                        </div>
+                    </div>
+                </div>
+                <div class="row">
+                    {% if products %}
+                        {% for pr in products %}
+                            <div class="col-xl-3 col-lg-3 col-md-6">
+                                <div class="product text-center mb-30">
+                                    <div class="product__thumb mb-35 pos-rel">
+                                        <a href="#"><img src="{{ pr.image.url }}" class="w-25 h-25" alt=""></a>
+                                        <div class="product__thumb--action pos-abl">
+                                            <a class="action-btn" href="{% url 'read_one_shop' pr.id %}"><i
+                                                    class="far fa-cart-plus"></i></a>
+                                            <a class="action-btn" href="{% url 'read_one_shop' pr.id %}"><i
+                                                    class="far fa-expand"></i></a>
+                                        </div>
+                                    </div>
+                                    <div class="product__content">
+                                        <h6><a href="shop.html">{{ pr.name }}</a></h6>
+                                        <span>{{ pr.price }}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            </div>
+        </section>
+        <!--feature-product-area end-->
+    </main>
+{% endblock %}

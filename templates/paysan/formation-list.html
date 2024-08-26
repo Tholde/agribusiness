@@ -1,0 +1,111 @@
+﻿{% extends 'paysan/base.html' %}
+{% block content %}
+    {% load static %}
+    <div class="relative min-h-screen group-data-[sidebar-size=sm]:min-h-[1500px]">
+
+        <div class="group-data-[sidebar-size=lg]:ltr:lg:ml-vertical-menu group-data-[sidebar-size=lg]:rtl:lg:mr-vertical-menu group-data-[sidebar-size=md]:ltr:ml-vertical-menu-md group-data-[sidebar-size=md]:rtl:mr-vertical-menu-md group-data-[sidebar-size=sm]:ltr:lg:ml-vertical-menu-sm group-data-[sidebar-size=sm]:lg:rtl:mr-vertical-menu-sm pt-[calc(theme('spacing.header')_*_1)] pb-[calc(theme('spacing.header')_*_1)] px-6 group-data-[layout=horizontal]:!mx-auto group-data-[layout=horizontal]:max-w-screen-2xl  group-data-[layout=horizontal]:lg:pt-[calc(theme('spacing.header')_*_1.75)] ">
+            <div class="container-fluid">
+
+                <div class="md:flex items-center justify-between pt-6 pb-5">
+                    <div>
+                        <h6 class="mb-0 text-16 uppercase font-semibold dark:text-white">Liste des Utilisateurs</h6>
+                    </div>
+                    <div class="shrink-0">
+                        <ul class="mb-0 flex items-center gap-4 text-[13px] mt-2 md:mt-0">
+                            <li class="before:content-['/'] before:absolute ltr:before:-right-1 rtl:before:-left-2 before:text-gray-600 before:text-[9px] before:top-0 before:bottom-0 before:flex before:items-center relative pr-3 inline-block">
+                                <a href="#!" class="text-gray-800 dark:text-white">TECHNICIEN</a></li>
+                            <li class="text-gray-600 dark:text-zink-200">Liste des Utilisateurs</li>
+                        </ul>
+                    </div>
+                </div>
+                <div>
+                    <div class="grid grid-cols-12">
+                        <div class="col-span-12 ">
+                            <div class="card dark:bg-zink-700 mb-0 border-b border-gray-400/50 dark:border-zink-50">
+                                <div class="card-body">
+                                    <div class=" sm:flex space-y-3 sm:space-y-0 justify-between items-center">
+                                        <h5 class="text-15 font-semibold text-gray-700 dark:text-white">Liste des
+                                            Formations</h5>
+                                        <div class="flex gap-x-2">
+                                            
+                                            <button type="button"
+                                                    class="text-gray-600 transition-all duration-300 ease-linear dark:bg-zink-50 border-gray-50 bg-gray-50 hover:bg-gray-600 hover:border-gray-600 hover:text-white active:bg-gray-600 active:border-gray-600 active:text-white focus:bg-gray-600 focus:ring focus:ring-gray-600/30 focus:border-gray-600 focus:text-white btn dark:border-transparent dark:text-zink-200">
+                                                <i class="mdi mdi-refresh"></i></button>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-span-12 ">
+                                {% if messages %}
+                                    <div class="group flex justify-content-center mt-4 mb-4 px-10">
+                                        <img src="{% static 'error.png' %}" class="h-6 mx-2" alt="">
+                                        <span class="block text-13 font-bold text-red-700 mb-2 dark:text-red-700"
+                                              for="userpassword">{{ messages }}</span>
+                                    </div>
+                                {% endif %}
+                            </div>
+                            <div class="card dark:bg-zink-700 dark:text-zink-200 dark:border-zink-50">
+                                <div class="card-body overflow-x-auto whitespace-nowrap">
+                                    <table class="ltr:text-left rtl:text-right table w-full datatable dt-responsive nowrap border-spacing-y-1.5 border-collapse text-gray-800 ">
+                                        <thead>
+                                        <tr>
+                                            <th class="p-3 border-b border-gray-300 items-center text-13 font-semibold dark:border-zink-50 dark:text-zink-200 ">
+                                                No
+                                            </th>
+                                            <th class="p-3 border-b border-gray-300 text-13 items-center font-semibold dark:border-zink-50 dark:text-zink-200 ">
+                                                Image
+                                            </th>
+                                            <th class="p-3 border-b border-gray-300 text-13 items-center font-semibold dark:border-zink-50 dark:text-zink-200 ">
+                                                Titre
+                                            </th>
+                                            <th class="p-3 border-b border-gray-300 text-13 items-center font-semibold dark:border-zink-50 dark:text-zink-200 ">
+                                                Description
+                                            </th>
+                                            <th class="p-3 border-b border-gray-300 text-13 items-center font-semibold dark:border-zink-50 dark:text-zink-200 ">
+                                                Fichier
+                                            </th>
+                                            <th class="p-3 border-b border-gray-300 text-13 items-center font-semibold dark:border-zink-50 dark:text-zink-200 ">
+                                                Formateur
+                                            </th>
+                                            <th class="p-3 border-b border-gray-300 text-13 items-center font-semibold dark:border-zink-50 dark:text-zink-200 ">
+                                                Action
+                                            </th>
+                                        </tr>
+                                        </thead>
+                                        <tbody>
+                                        {% if formation %}
+                                            {% for usr in formation %}
+                                                <tr class="text-gray-600 dark:text-zink-200 text-13 border-b dark:border-zink-50 ">
+                                                    <td class="p-3 border-b border-gray-300 text-13 items-center dark:border-zink-50 dark:text-zink-200">{{ forloop.counter }}</td>
+                                                    <td class="p-3 border-b border-gray-300 text-13 items-center dark:border-zink-50 dark:text-zink-200">
+                                                        <div class="bg-gray-50 dark:bg-zink-50 w-8 h-8 rounded-full">
+                                                            <img src="{{ usr.image.url }}"
+                                                                 class="w-8 h-8 rounded-full" alt="">
+                                                        </div>
+                                                    </td>
+                                                    <td class="p-3 border-b border-gray-300 text-13 items-center dark:border-zink-50 dark:text-zink-200"> {{ usr.title }} </td>
+                                                    <td class="p-3 border-b border-gray-300 text-13 items-center dark:border-zink-50 dark:text-zink-200"> {{ usr.description }} </td>
+                                                    <td class="p-3 border-b border-gray-300 text-13 items-center dark:border-zink-50 dark:text-zink-200"> <a href="{{ usr.file.url }}">{{ usr.file}}</a> </td>
+                                                    <td class="p-3 border-b border-gray-300 text-13 items-center dark:border-zink-50 dark:text-zink-200"> {{ usr.technicien.first_name }} </td>
+                                                </tr>
+                                            {% endfor %}
+                                        {% endif %}
+                                        </tbody>
+
+                                    </table>
+                                </div>
+                            </div>
+                            <!-- end table -->
+                        </div>
+                    </div>
+                    <!-- end grid -->
+                </div>
+
+            </div>
+            <!-- container-fluid -->
+        </div>
+        <!-- End Page-content -->
+        {% include 'admin/footer.html' %}
+    </div>
+    <!-- end main content -->
+{% endblock %}

@@ -1,0 +1,217 @@
+﻿{% extends 'technicien/base.html' %}
+{% block content %}
+    {% load static %}
+    <script src="{% static 'jquery-3.1.1.min.js' %}" integrity="sha256-hVVnYaiADRTO2PzUGmuLJr8BLUSjGIZsDYGmIJLv2b8="
+            crossorigin="anonymous"></script>
+    {% if room %}
+        <script>
+            $(document).ready(function () {
+                var display = $("#display");
+                setInterval(function () {
+                    $.ajax({
+                        type: 'GET',
+                        url: "/getMessages/{{room}}/",
+                        success: function (response) {
+                            console.log(response);
+                            var isAtBottom = display.scrollTop() + display.innerHeight() >= display[0].scrollHeight;
+                            $("#display").empty();
+                            for (var key in response.messages) {
+                                var rawDate = new Date(response.messages[key].date);
+                                var formattedDate = rawDate.toLocaleString('en-EN', {
+                                    day: 'numeric',
+                                    month: 'short',
+                                    year: 'numeric',
+                                    hour: '2-digit',
+                                    minute: '2-digit'
+                                });
+                                {#if (response.messages[key].user === response.username) {#}
+                                {#    var temp = "<div class='darker'><b>" + response.messages[key].user + "</b><p>" + response.messages[key].value + "</p><span>" + formattedDate + "</span></div>";#}
+                                {#    $("#display_end").append(temp);#}
+                                {# else #}
+                                {#    var temp = "<div class='darker'><b>" + response.messages[key].user + "</b><p>" + response.messages[key].value + "</p><span>" + formattedDate + "</span></div>";#}
+                                {#    $("#display").append(temp);#}
+
+                                var temp = "<li class='flex mb-5 ml-5'><div class='inline-block px-5 py-3 rounded-lg bg-green-50 dark:bg-green-500/10'><b class='mr-2 text-green-500 font-semibold'>" + response.messages[key].user + "</b><p class='mb-0 text-gray-700 mt-0.5 text-13 dark:text-zink-200'>" + response.messages[key].value + "</p><span class='text-[12px] text-gray-600 dark:text-zink-200 mt-4'><i class='bx bx-time-five align-middle me-1'></i> " + formattedDate + "</span></div></li>";
+                                $("#display").append(temp);
+                            }
+                            if (isAtBottom) {
+                                $("#display").scrollTop($("#display")[0].scrollHeight);
+                            }
+                        },
+                        error: function (response) {
+                            console.log('error server')
+                        }
+                    });
+                }, 500);
+            });
+        </script>
+    {% endif %}
+
+    <div class="relative min-h-screen group-data-[sidebar-size=sm]:min-h-[1500px] overflow-y-hidden">
+
+        <div class="group-data-[sidebar-size=lg]:ltr:lg:ml-vertical-menu group-data-[sidebar-size=lg]:rtl:lg:mr-vertical-menu group-data-[sidebar-size=md]:ltr:ml-vertical-menu-md group-data-[sidebar-size=md]:rtl:mr-vertical-menu-md group-data-[sidebar-size=sm]:ltr:lg:ml-vertical-menu-sm group-data-[sidebar-size=sm]:lg:rtl:mr-vertical-menu-sm pt-[calc(theme('spacing.header')_*_1)] pb-[calc(theme('spacing.header')_*_1)] px-6 group-data-[layout=horizontal]:!mx-auto group-data-[layout=horizontal]:max-w-screen-2xl  group-data-[layout=horizontal]:lg:pt-[calc(theme('spacing.header')_*_1.75)] h-screen">
+            <div class="container-fluid">
+
+                <div class="md:flex items-center justify-between pt-6 pb-5">
+                    <div>
+                        <h6 class="mb-0 text-16 uppercase font-semibold dark:text-white">Messages</h6>
+                    </div>
+                    <div class="shrink-0">
+                        <ul class="mb-0 flex items-center gap-4 text-[13px] mt-2 md:mt-0">
+                            <li class="before:content-['/'] before:absolute ltr:before:-right-1 rtl:before:-left-2 before:text-gray-600 before:text-[9px] before:top-0 before:bottom-0 before:flex before:items-center relative pr-3 inline-block">
+                                <a href="#!" class="text-gray-800 dark:text-white">ADMIN</a></li>
+                            <li class="text-gray-600 dark:text-zink-200">Messages</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="gap-x-6 mb-10 lg:flex">
+                    <div class="min-w-[300px] lg:min-w-[380px]">
+                        <div class="mb-0">
+                            <div class="py-6">
+                                <div class="flex">
+                                    <div class="self-center">
+                                        <img src="{{ admin.image.url }}" alt=""
+                                             class="w-8 h-8 rounded-full">
+                                    </div>
+                                    <div class="grow text-13">
+                                        <h6 class="mb-1 ml-4">
+                                            <a href="#"
+                                               class="align-middle text-15">{{ admin.first_name }}&nbsp;{{ admin.last_name }}
+                                            </a>
+                                            <p class="mt-1 mb-0 font-normal text-gray-600 text-13 dark:text-white">
+                                                <i class="mr-1 text-green-500 align-middle mdi mdi-circle text-13"></i>Active
+                                            </p>
+                                        </h6>
+                                    </div>
+                                </div>
+                                <hr class="border-gray-300 dark:border-zink-50 my-6">
+                                <div class="nav-tabs tab-pill ">
+                                    <div class="tab-content">
+                                        <div class="w-full tab-pane block" id="chat">
+                                            <div class="pt-6 ">
+                                                <h5 class="text-sm text-gray-700 mb-4 dark:text-white">Recent</h5>
+                                                <ul class=" max-h-[calc(100vh_-_500px)]" data-simplebar="">
+                                                    {% if room_all %}
+                                                        {% for rm in room_all %}
+                                                            <li class=" px-4 py-3.5 bg-white hover:bg-white transition-all duration-300 dark:bg-zink-50/50 dark:border-b dark:border-zink-50">
+                                                                <a class="flex items-start "
+                                                                   href="{% url "check" rm.id %}">
+                                                                    <div class="flex items-center relative ltr:mr-4 rtl:ml-4">
+                                                                        <span class="flex-shrink-0 ltr:mr-4 rtl:ml-4 h-2 w-2 bg-gray-600 rounded-full"></span>
+                                                                    </div>
+                                                                    <div class="flex-grow overflow-hidden">
+                                                                        <h5 class="text-gray-600 text-[14px] dark:text-white">
+                                                                            {{ forloop.counter }}
+                                                                            &nbsp;-&nbsp;{{ rm.name }}</h5>
+                                                                        <p class="mb-0 text-gray-600 text-13 dark:text-zink-200"></p>
+                                                                    </div>
+                                                                    <div class="flex-shrink-0 ">
+                                                                        <div class="text-[10px] text-gray-600  dark:text-zink-200">
+                                                                            {{ rm.date|date:"Y-N-d, h:i:s A" }}
+                                                                        </div>
+                                                                    </div>
+                                                                </a>
+                                                            </li>
+                                                        {% endfor %}
+                                                    {% endif %}
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% if room %}
+                        <div class="w-full mt-5 mb-4 lg:mt-0">
+                            <div class="mb-0 card dark:bg-zink-700 shadow-gray-400/10">
+                                <div class="p-6 border-b border-gray-300 dark:border-zink-50">
+                                    <div class="grid items-center grid-cols-12">
+                                        <div class="col-span-6">
+                                            <div class="text-13">
+                                                <a href="#" class="font-medium text-15 text-gray-700 dark:text-white">Réunion
+                                                    du Technicien Agricole</a>
+                                                <p class="mt-1 mb-0 text-13 text-gray-600  truncate flex items-center dark:text-zink-200">
+                                                    <span class="h-2.5 w-2.5 ltr:mr-1 rtl:ml-1 bg-green-500 block rounded-full"></span>
+                                                    {{ room }} - Groupe
+                                                </p>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <ul class="max-h-[calc(100vh_-_380px)] py-4 px-2" data-simplebar="">
+                                    <li class="relative mb-6 text-center chat-day-title">
+                                        <span class="relative z-30 px-6 py-1.5 text-gray-700 bg-white rounded-full title dark:text-white dark:bg-zink-700">All messages</span>
+                                        <div class="absolute w-full border-b top-3 border-gray-300 dark:border-zink-50"></div>
+                                    </li>
+                                    <ul>
+                                        <div id="display">
+                                            <p>Aucun message présent</p>
+                                        </div>
+                                    </ul>
+                                </ul>
+                                <div class="p-3 border-t border-gray-300 dark:border-zink-50 relative">
+                                    {#                                <div class="flex gap-x-6 flex-warp">#}
+                                    <form class="flex gap-x-6 flex-warp" id="post-form">
+                                        {% csrf_token %}
+                                        <div class="grow relative">
+                                            <input type="hidden" name="username" id="username" value="{{ username }}"/>
+                                            <input type="hidden" name="room_id" id="room_id"
+                                                   value="{{ room_details.id }}"/>
+                                            <input type="text"
+                                                   name="message" id="message"
+                                                   class=" rounded-full  border-gray-300 w-full bg-[#eff2f7] placeholder:text-13 placeholder:text-gray-600 focus:outline-none py-2 ltr:pr-28 rtl:pl-28 px-4 dark:bg-transparent dark:bg-zink-50"
+                                                   placeholder="Enter Message...">
+{#                                            <div class="flex gap-x-4  text-green-500 text-16 absolute top-2 ltr:right-5 rtl:left-5">#}
+{#                                                <a href="#!"><i class="mdi mdi-emoticon-happy-outline"></i></a>#}
+{#                                                <a href="#!"><i class="mdi mdi-file-image-outline">#}
+{#                                                    <input type="file" name="image" id="image" hidden="hidden">#}
+{#                                                </i>#}
+{#                                                </a>#}
+{#                                                <a href="#!"><i class="mdi mdi-file-document-outline"></i></a>#}
+{#                                            </div>#}
+                                        </div>
+                                        <div class="inline-block flex-shrink-0">
+                                            <button type="submit"
+                                                    class="text-white rounded-full  bg-green-500 border-transparent btn shadow-blue-200 focus:ring focus:ring-green-200 px-5 flex">
+                                                <span class="ltr:lg:mr-2 rtl:lg:ml-2 d-none d-sm-inline-block hidden lg:block">Send</span>
+                                                <i class="ltr:lg:ml-2 rtl:lg-mr-2 mdi mdi-send float-end"></i>
+                                            </button>
+                                        </div>
+                                    </form>
+                                    <script type="text/javascript">
+                                        $(document).on('submit', '#post-form', function (e) {
+                                            e.preventDefault();
+
+                                            $.ajax({
+                                                type: 'POST',
+                                                url: '/send',
+                                                data: {
+                                                    username: $('#username').val(),
+                                                    room_id: $('#room_id').val(),
+                                                    message: $('#message').val(),
+                                                    csrfmiddlewaretoken: $('input[name=csrfmiddlewaretoken]').val(),
+                                                },
+                                                success: function (data) {
+                                                    // alert(data)
+                                                }
+                                            });
+                                            document.getElementById('message').value = ''
+                                        });
+                                    </script>
+                                    {#                                </div>#}
+                                </div>
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+
+            </div>
+            <!-- container-fluid -->
+        </div>
+        <!-- End Page-content -->
+        {% include 'admin/footer.html' %}
+    </div>
+    <!-- end main content -->
+{% endblock %}

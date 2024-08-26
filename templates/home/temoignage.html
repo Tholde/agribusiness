@@ -1,0 +1,73 @@
+﻿{% extends 'home/base.html' %}
+{% load static %}
+{% block content %}
+    <main>
+        <!--page-title-area start-->
+        <section class="page-title-area pos-rel"
+                 style="background-image: url({% static 'asset/img/bg/page-banner.jpg' %});">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-8 offset-xl-2">
+                        <div class="page-title text-center pt-180">
+                            <h2>Formation</h2>
+                            <div class="breadcrumb-list text-center">
+                                <ul>
+                                    <li><a href="#">Accueil</a></li>
+                                    <li>Notre Formation</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--page-title-area start-->
+        <!--blog-details-area start-->
+        <section class="blog-details-area pt-130 pb-130">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-8 col-lg-8 col-md-12">
+                        {% if temoignages %}
+                        {% for tmg in temoignages %}
+                        <div class="blog-list">
+                            <div class="blog__content">
+                                <div class="blog-heading grey-bg">
+                                    <h3><a href="#">{{ tmg.title }}</a></h3>
+                                </div>
+                                <div class="blog__content--thumb-03 mb-35">
+                                    <img src="{{ tmg.image.url }}" alt="">
+                                </div>
+                                <div class="blog__content--meta mb-10">
+                                    <a href="#"><i class="far fa-user"></i>{{tmg.member.user.first_name }}&nbsp;{{ tmg.member.user.last_name }}</a>
+                                    <a href="#"><i class="far fa-calendar-alt"></i> {{ tmg.date|date:"Y-N-d, h:i:s A" }}</a>
+                                </div>
+                                <p class="mb-30">{{ tmg.description }}</p>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    {% endif %}
+                    </div>
+                    <div class="col-xl-4 col-lg-4 col-md-12">
+                        <div class="widget mb-40">
+                            <div class="widget__title__box">
+                                <h5 class="widget-title">Notre Services</h5>
+                            </div>
+                            <div class="catagory-list">
+                                <ul class="cat">
+                                    <li><a href="{% url 'login' %}">Conseil <span class="f-right"><i class="fas fa-chevron-right"></i></span></a></li>
+                                    <li><a href="{% url 'login' %}">Transportations <span class="f-right"><i class="fas fa-chevron-right"></i></span></a></li>
+                                    <li><a href="{% url 'login' %}">Terrain <span class="f-right"><i class="fas fa-chevron-right"></i></span></a></li>
+                                    <li><a href="{% url 'login' %}">Aide Financière <span class="f-right"><i class="fas fa-chevron-right"></i></span></a></li>
+                                    <li><a href="{% url 'login' %}">Creation Projet <span class="f-right"><i class="fas fa-chevron-right"></i></span></a></li>
+                                    <li><a href="{% url 'login' %}">Formation <span class="f-right"><i class="fas fa-chevron-right"></i></span></a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--blog-details-area start-->
+    </main>
+
+{% endblock %}

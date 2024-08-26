@@ -1,0 +1,71 @@
+﻿{% extends 'home/base.html' %}
+{% load static %}
+{% block content %}
+    <main>
+        <!--page-title-area start-->
+        <section class="page-title-area pos-rel"
+                 style="background-image: url({% static 'asset/img/bg/page-banner.jpg' %});">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-8 offset-xl-2">
+                        <div class="page-title text-center pt-180">
+                            <h2>Formation</h2>
+                            <div class="breadcrumb-list text-center">
+                                <ul>
+                                    <li><a href="#">Accueil</a></li>
+                                    <li>Notre Formation</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--page-title-area start-->
+        <section class="service-content-area pt-125 pb-90">
+            <div class="container">
+                <div class="row">
+                {% for fr in formation %}
+                    <div class="col-xl-8 col-lg-8 col-md-12">
+                        <div class="service-box mb-30">
+                            <h2 class="service-title mb-20">{{ fr.title }}</h2>
+                            <p class="mb-40">{{ fr.description }}</p>
+                            <div class="service-box-img mb-30">
+                                <img src="{{ fr.image.url}}" alt="">
+                            </div>
+                            <p>{{ fr.association.name }}</p>
+                            <p>{{ fr.date|date:"Y-N-d, h:i:s A" }}</p>
+                        </div>
+                    </div>
+                {% endfor %}
+                    <div class="col-xl-4 col-lg-4 col-md-12">
+                        <div class="widget mb-40">
+                            <div class="widget__title__box">
+                                <h5 class="widget-title">Fichier de formation</h5>
+                            </div>
+                            <div class="catagory-list">
+                                <ul class="cat">
+                                    {% for fr in formation %}
+                                    <li><a href="{{ fr.file.url }}">fichier {{ forloop.counter }}<span class="f-right"><i
+                                            class="fas fa-chevron-right"></i></span></a></li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+                        {% if  frm %}
+                            {% for fr in frm %}
+                        <div class="widget mb-40">
+                            <div class="widget__box text-center pl-35 pr-35 pt-45 pb-45">
+                                <img class="mb-35 w-25 h-25" src="{{ fr.technicien.image.url }}" alt="">
+                                <h2 class="widget-title mb-15">{{ fr.technicien.first_name }} </h2>
+                                <p>{{ fr.technicien.email}}</p>
+                            </div>
+                        </div>
+                            {% endfor %}
+                        {% endif %} 
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+{% endblock %}

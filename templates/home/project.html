@@ -1,0 +1,111 @@
+﻿{% extends 'home/base.html' %}
+{% load static %}
+{% block content %}
+    <main>
+        <!--page-title-area start-->
+        <section class="page-title-area pos-rel"
+                 style="background-image: url({% static 'asset/img/bg/page-banner.jpg' %});">
+            <div class="container">
+                <div class="row">
+                    <div class="col-xl-8 offset-xl-2">
+                        <div class="page-title text-center pt-180">
+                            <h2>Projet</h2>
+                            <div class="breadcrumb-list text-center">
+                                <ul>
+                                    <li><a href="#">Accueil</a></li>
+                                    <li>Notre Projet</li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        <!--page-title-area start-->
+        <!--project-gallery-area start-->
+        <section class="project-gallery-area pt-125">
+            <div class="container">
+                <div class="row">
+                    {% if projects %}
+                        {% for prj in projects %}
+                            <div class="col-xl-6 col-lg-6 col-md-6">
+                                <div class="gallery pos-rel mb-30">
+                                    <div class="gallery__img pos-rel mb-35">
+                                        <img src="{{ prj.image }}" class="w-100 h-100" alt="">
+                                    </div>
+                                    <div class="gallery__text pos-abl mb-30">
+                                        <h2><a href="{% url 'one_project' prj.id %}">{{ prj.name }}</a></h2>
+                                        <span>{{ prj.association.name }}</span>
+                                    </div>
+                                    <a class="arow_btn pos-abl" href="{% url 'one_project' prj.id %}"><i
+                                            class="fal fa-long-arrow-right"></i></a>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            </div>
+        </section>
+        <!--project-gallery-area end-->
+        <!--project-deatils-area end-->
+        <section class="project-deatils-area pb-85">
+            <div class="container">
+                <div class="row">
+                    {% if project %}
+                        {% for prj in project %}
+                            <div class="col-xl-8 col-lg-8 col-md-12">
+                                <div class="service-box mb-35">
+                                    <h2 class="service-title process-title mb-20"><i
+                                            class="far fa-leaf"></i>{{ prj.name }}</h2>
+                                    <p class="mb-35">{{ prj.description }}</p>
+                                    <div class="accordion mb-50" id="accordionExample">
+                                        <div class="card">
+                                            <div class="card-header" id="headingOne">
+                                                <h2 class="mb-0">
+                                                    <button class="btn btn-link collapsed" type="button"
+                                                            data-toggle="collapse"
+                                                            data-target="#collapseOne" aria-expanded="true"
+                                                            aria-controls="collapseOne">
+                                                        Fichier detaillé
+                                                    </button>
+                                                </h2>
+                                            </div>
+                                            <div id="collapseOne" class="collapse" aria-labelledby="headingOne"
+                                                 data-parent="#accordionExample">
+                                                <div class="card-body d-md-flex">
+                                                    <a href="{{ prj.file }}">Clicker ici pour télécharger</a>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div class="row service-box-img">
+                                        <div class="col-md-6">
+                                            <div class="child-img mb-30">
+                                                <img src="{{ prj.image.url }}" class="w-100 h-100" alt="">
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="col-xl-4 col-lg-4 col-md-12">
+                                <div class="widget mb-40">
+                                    <div class="widget__title__box">
+                                        <h2 class="widget-title">Information du Projet</h2>
+                                    </div>
+                                    <div class="infos">
+                                        <ul class="infos__details">
+                                            <li><span>Association :</span> {{ prj.association.name }}</li>
+                                            <li><span>Budget :</span> {{ prj.budget }}</li>
+                                            <li><span>Date :</span>{{ prj.date|date:"Y-N-d, h:i:s A" }}</li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    {% endif %}
+                </div>
+            </div>
+        </section>
+        <!--project-deatils-area end-->
+    </main>
+{% endblock %}

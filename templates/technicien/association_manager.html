@@ -1,0 +1,269 @@
+﻿{% extends 'technicien/base.html' %}
+{% block content %}
+    {% load static %}
+    <div class="relative min-h-screen group-data-[sidebar-size=sm]:min-h-[1500px] overflow-y-hidden">
+
+        <div class="group-data-[sidebar-size=lg]:ltr:lg:ml-vertical-menu group-data-[sidebar-size=lg]:rtl:lg:mr-vertical-menu group-data-[sidebar-size=md]:ltr:ml-vertical-menu-md group-data-[sidebar-size=md]:rtl:mr-vertical-menu-md group-data-[sidebar-size=sm]:ltr:lg:ml-vertical-menu-sm group-data-[sidebar-size=sm]:lg:rtl:mr-vertical-menu-sm pt-[calc(theme('spacing.header')_*_1)] pb-[calc(theme('spacing.header')_*_1)] px-6 group-data-[layout=horizontal]:!mx-auto group-data-[layout=horizontal]:max-w-screen-2xl  group-data-[layout=horizontal]:lg:pt-[calc(theme('spacing.header')_*_1.75)] h-screen">
+            <div class="container-fluid">
+
+                <div class="md:flex items-center justify-between pt-6 pb-5">
+                    <div>
+                        <h6 class="mb-0 text-16 uppercase font-semibold dark:text-white">Association</h6>
+                    </div>
+                    <div class="shrink-0">
+                        <ul class="mb-0 flex items-center gap-4 text-[13px] mt-2 md:mt-0">
+                            <li class="before:content-['/'] before:absolute ltr:before:-right-1 rtl:before:-left-2 before:text-gray-600 before:text-[9px] before:top-0 before:bottom-0 before:flex before:items-center relative pr-3 inline-block">
+                                <a href="#!" class="text-gray-800 dark:text-white">Technicien</a></li>
+                            <li class="text-gray-600 dark:text-zink-200">Association</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="gap-x-6 mb-10 lg:flex">
+                    <div class="min-w-[300px] lg:min-w-[380px]">
+                        <div class="mb-0">
+                            <div class="py-6">
+                                <div class="flex">
+                                    <div class="self-center">
+                                        <img src="{{ admin.image.url }}" alt="" class="w-8 h-8 rounded-full">
+                                    </div>
+                                    <div class="grow text-13">
+                                        <h6 class="mb-1 ml-4">
+                                            <a href="#"
+                                               class="align-middle text-15">{{ admin.first_name }}&nbsp;{{ admin.last_name }}
+                                            </a>
+                                            <p class="mt-1 mb-0 font-normal text-gray-600 text-13 dark:text-white">
+                                                <i class="mr-1 text-green-500 align-middle mdi mdi-circle text-13"></i>Active
+                                            </p>
+                                        </h6>
+                                    </div>
+                                </div>
+                                <hr class="border-gray-300 dark:border-zink-50 my-6">
+                                <div class="nav-tabs tab-pill ">
+                                    <div class="overflow-hidden">
+                                        <ul class="nav text-13 bg-white font-medium text-center text-gray-800 flex rounded-md overflow-hidden dark:bg-zink-50 dark:text-white">
+                                            <li class="w-full">
+                                                <button class="mt-2 sm:mt-0 w-full sm:w-full text-13 h-9 text-white bg-green-500 border-transparent btn hover:bg-green-700"
+                                                        id="btn-new-event" data-tw-toggle="modal"
+                                                        data-tw-target="#event-modal">
+                                                    <i class="mdi mdi-group"></i>&nbsp;&nbsp;Creer une association
+                                                </button>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                    <div class="tab-content">
+                                        <div class="w-full tab-pane block" id="chat">
+                                            <div class="pt-6 ">
+                                                <h5 class="text-sm text-gray-700 mb-4 dark:text-white">Recent</h5>
+                                                <ul class=" max-h-[calc(100vh_-_500px)]" data-simplebar="">
+                                                    {% if associations %}
+                                                        {% for ass in associations %}
+                                                            <li class=" px-4 py-3.5 bg-white hover:bg-white transition-all duration-300 dark:bg-zink-50/50 dark:border-b dark:border-zink-50">
+                                                                <a href="{% url 'read_one_association' ass.id %}">
+                                                                    <div class="flex items-start ">
+                                                                        <div class="flex items-center relative ltr:mr-4 rtl:ml-4">
+                                                                            <span class="flex-shrink-0 ltr:mr-4 rtl:ml-4 h-2 w-2 bg-gray-600 rounded-full"></span>
+                                                                            <div class="text-center h-8 w-8 bg-blue-100 rounded-full  dark:bg-blue-500/30 overflow-hidden">
+                                                                                <img src="{{ ass.logo.url }}"
+                                                                                     class="w-full h-full" alt="">
+                                                                            </div>
+                                                                        </div>
+                                                                        <div class="flex-grow overflow-hidden">
+                                                                            <h5 class="text-gray-600 text-[14px] dark:text-white">
+                                                                                {{ forloop.counter }}&nbsp;-&nbsp;{{ ass.name }}</h5>
+                                                                        </div>
+                                                                        <div class="flex-shrink-0 ">
+                                                                            <div class="text-[10px] text-gray-600  dark:text-zink-200">
+                                                                                {{ ass.date|date:"Y-N-d, h:i:s A" }}</div>
+                                                                        </div>
+                                                                    </div>
+                                                                </a>
+                                                            </li>
+                                                        {% endfor %}
+                                                    {% endif %}
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    {% if member %}
+                        <div class="w-full mt-5 mb-4 lg:mt-0">
+                            <div class="mb-0 card dark:bg-zink-700 shadow-gray-400/10">
+                                <div class="p-6 border-b border-gray-300 dark:border-zink-50">
+                                    <div class="grid items-center grid-cols-12">
+                                        <div class="col-span-6">
+                                            <div class="text-13">
+                                                <a href="#"
+                                                   class="font-medium text-15 text-gray-700 dark:text-white">Association</a>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                                <ul class="max-h-[calc(100vh_-_380px)] py-4 px-2" data-simplebar="">
+                                    <li class="relative mb-6 text-center chat-day-title">
+                                        <span class="relative z-30 px-6 py-1.5 text-gray-700 bg-white rounded-full title dark:text-white dark:bg-zink-700">Membres</span>
+                                        <div class="absolute w-full border-b top-3 border-gray-300 dark:border-zink-50"></div>
+                                    </li>
+                                    <ul>
+                                        <div class="pb-0 card-body">
+                                            <div class="relative overflow-x-auto">
+                                                <table class="w-full text-sm ltr:text-left rtl:text-right text-gray-500 ">
+                                                    <thead class="text-sm text-gray-700 dark:text-zink-200 bg-gray-50 dark:bg-zink-50">
+                                                    <tr class="">
+                                                        <th scope="col"
+                                                            class="p-3 font-semibold border-b border-gray-400 font-semibold dark:text-zink-200 dark:border-zink-50">
+                                                            #
+                                                        </th>
+                                                        <th scope="col"
+                                                            class="p-3 font-semibold border-b border-gray-400 font-semibold  dark:text-zink-200 dark:border-zink-50">
+                                                            Nom
+                                                        </th>
+                                                        <th scope="col"
+                                                            class="p-3 font-semibold border-b border-gray-400 font-semibold dark:text-zink-200 dark:border-zink-50">
+                                                            Role
+                                                        </th>
+                                                        <th scope="col"
+                                                            class="p-3 font-semibold border-b border-gray-400 font-semibold dark:text-zink-200 dark:border-zink-50">
+                                                            Date
+                                                        </th>
+                                                    </tr>
+                                                    </thead>
+                                                    <tbody>
+                                                    {% for mbr in member %}
+                                                    <tr class="bg-white border-b border-gray-300 dark:bg-transparent dark:border-zink-50">
+                                                        <th scope="row"
+                                                            class="p-3 font-medium text-gray-700 whitespace-nowrap dark:text-zink-200">
+                                                            {{ forloop.counter }}
+                                                        </th>
+                                                        <td class="p-3 text-gray-700 font-normal whitespace-nowrap dark:text-zink-200">
+                                                            {{ mbr.user.first_name }}
+                                                        </td>
+                                                        <td class="p-3 text-gray-700 font-normal whitespace-nowrap dark:text-zink-200">
+                                                            {{ mbr.role }}
+                                                        </td>
+                                                        <td class="p-3 text-gray-700 font-normal whitespace-nowrap dark:text-zink-200">
+                                                            {{ mbr.date_joined|date:"Y-N-d, h:i:s A" }}
+                                                        </td>
+                                                    </tr>
+                                                    {% endfor %}
+                                                    </tbody>
+                                                </table>
+                                            </div>
+                                        </div>
+                                    </ul>
+                                </ul>
+                            </div>
+                        </div>
+                    {% endif %}
+                </div>
+                <div class="relative z-50 hidden modal" id="event-modal" aria-labelledby="modal-title" role="dialog"
+                     aria-modal="true">
+                    <div class="fixed inset-0 z-50 overflow-y-auto">
+                        <div class="absolute inset-0 transition-opacity bg-black bg-opacity-50 modal-overlay"></div>
+                        <div class="flex items-end justify-center min-h-full p-4 text-center sm:items-center sm:p-0">
+                            <div class="relative overflow-hidden text-left transition-all transform bg-white dark:bg-zink-700 rounded-lg shadow-xl sm:my-8 sm:w-full sm:max-w-lg">
+                                <div class="bg-white dark:bg-zink-700">
+                                    <div class="flex items-center p-4 pb-0 rounded-t ">
+                                        <h5 class="text-16 font-medium text-gray-700 dark:text-white" id="modal-title">
+                                            Ajout Association</h5>
+                                        <button class="inline-flex items-center px-2 py-1 text-sm text-gray-400 border-transparent rounded-lg ltr:ml-auto rtl:mr-auto btn hover:bg-gray-50/50 hover:text-gray-900 dark:text-gray-100 dark:hover:bg-zinc-600"
+                                                type="button" id="eventModal-close" data-tw-dismiss="modal">
+                                            <i class="text-xl text-gray-500 mdi mdi-close dark:text-zinc-100/60"></i>
+                                        </button>
+                                    </div>
+
+                                    <form class="needs-validation" method="POST" action="{% url 'create_association' %}"
+                                          name="event-form" enctype="multipart/form-data"
+                                          id="form-event" autocomplete="off"
+                                          novalidate="">
+                                        {% csrf_token %}
+                                        <div class="p-6 space-y-6">
+                                            <div>
+                                                <label for="event-title"
+                                                       class="block mb-2 text-13 text-gray-600 dark:text-zink-200 ">Logo:</label>
+                                                <input type="file" name="logo" id="event-title"
+                                                       class="border text-13 border-gray-400 text-gray-700 dark:text-zink-200 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2 dark:bg-zink-700 dark:border-zink-50 dark:placeholder-gray-300 dark:placeholder:text-zink-200 placeholder:text-13" required="">
+                                            </div>
+                                            <div>
+                                                <label for="event-title"
+                                                       class="block mb-2 text-13 text-gray-600 dark:text-zink-200 ">Nom:</label>
+                                                <input type="text" name="nom" id="event-title"
+                                                       class="border text-13 border-gray-400 text-gray-700 dark:text-zink-200 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2 dark:bg-zink-700 dark:border-zink-50 dark:placeholder-gray-300 dark:placeholder:text-zink-200 placeholder:text-13"
+                                                       placeholder="Entrer le nom d'association" required="">
+                                            </div>
+                                        </div>
+
+                                        <div class="px-4 pb-6 sm:flex sm:px-6 ">
+                                            <button type="button"
+                                                    class="inline-flex justify-center w-full px-4 py-2 mt-3 ml-auto text-base font-medium text-gray-700 bg-gray-50 border border-gray-300 rounded-md shadow-sm btn dark:text-gray-100 hover:bg-gray-50/50 focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:mt-0 sm:w-auto sm:text-sm dark:bg-transparent dark:bg-zink-50 dark:border-transparent"
+                                                    data-tw-dismiss="modal">Cancel
+                                            </button>
+                                            <button type="submit"
+                                                    class="inline-flex justify-center w-full px-4 py-2 text-base font-medium text-white bg-green-500 border border-transparent rounded-md shadow-sm btn hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 sm:ml-3 sm:w-auto sm:text-sm dark:focus:ring-green-500/30"
+                                                    id="btn-save-event">Creer
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+ <div class="relative z-50 hidden modal" id="event" aria-labelledby="modal-title" role="dialog"
+                     aria-modal="true">
+                    <div class="fixed inset-0 z-50 overflow-y-auto">
+                        <div class="absolute inset-0 transition-opacity bg-black bg-opacity-50 modal-overlay"></div>
+                        <div class="flex items-end justify-center min-h-full p-4 text-center sm:items-center sm:p-0">
+                            <div class="relative overflow-hidden text-left transition-all transform bg-white dark:bg-zink-700 rounded-lg shadow-xl sm:my-8 sm:w-full sm:max-w-lg">
+                                <div class="bg-white dark:bg-zink-700">
+                                    <div class="flex items-center p-4 pb-0 rounded-t ">
+                                        <h5 class="text-16 font-medium text-gray-700 dark:text-white" id="modal-title">
+                                            Ajouter Membres</h5>
+                                        <button class="inline-flex items-center px-2 py-1 text-sm text-gray-400 border-transparent rounded-lg ltr:ml-auto rtl:mr-auto btn hover:bg-gray-50/50 hover:text-gray-900 dark:text-gray-100 dark:hover:bg-zinc-600"
+                                                type="button" id="eventModal-close" data-tw-dismiss="modal">
+                                            <i class="text-xl text-gray-500 mdi mdi-close dark:text-zinc-100/60"></i>
+                                        </button>
+                                    </div>
+
+                                    <form class="needs-validation" method="POST" action=""
+                                          name="event-form" enctype="multipart/form-data"
+                                          id="form-event" autocomplete="off"
+                                          novalidate="">
+                                        {% csrf_token %}
+                                        <div class="p-6 space-y-6">
+                                            <div>
+                                                <label for="event-title"
+                                                       class="block mb-2 text-13 text-gray-600 dark:text-zink-200 ">Nom:</label>
+                                                <input type="text" name="nom" id="event-title"
+                                                       class="border text-13 border-gray-400 text-gray-700 dark:text-zink-200 text-sm rounded focus:ring-blue-500 focus:border-blue-500 block w-full p-2 dark:bg-zink-700 dark:border-zink-50 dark:placeholder-gray-300 dark:placeholder:text-zink-200 placeholder:text-13"
+                                                       placeholder="Entrer le nom d'association" required="">
+                                            </div>
+                                        </div>
+
+                                        <div class="px-4 pb-6 sm:flex sm:px-6 ">
+                                            <button type="button"
+                                                    class="inline-flex justify-center w-full px-4 py-2 mt-3 ml-auto text-base font-medium text-gray-700 bg-gray-50 border border-gray-300 rounded-md shadow-sm btn dark:text-gray-100 hover:bg-gray-50/50 focus:outline-none focus:ring-2 focus:ring-indigo-500 sm:mt-0 sm:w-auto sm:text-sm dark:bg-transparent dark:bg-zink-50 dark:border-transparent"
+                                                    data-tw-dismiss="modal">Cancel
+                                            </button>
+                                            <button type="submit"
+                                                    class="inline-flex justify-center w-full px-4 py-2 text-base font-medium text-white bg-green-500 border border-transparent rounded-md shadow-sm btn hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 sm:ml-3 sm:w-auto sm:text-sm dark:focus:ring-green-500/30"
+                                                    id="btn-save-event">Creer
+                                            </button>
+                                        </div>
+                                    </form>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+            <!-- container-fluid -->
+        </div>
+        <!-- End Page-content -->
+
+        {% include 'technicien/footer.html' %}</div>
+    <!-- end main content -->
+{% endblock %}

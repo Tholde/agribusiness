@@ -1,0 +1,10 @@
+SUPERUSER:
+e-mail: rahalahifaliako.t@zurcher.edu.mg
+password: tholde1234
+
+Technicien:
+tholde.pathfinder@gmail.com
+technicien1234
+
+pathfinder.tholde@gmail.com
+navajoh1234

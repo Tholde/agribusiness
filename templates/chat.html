@@ -1,0 +1,318 @@
+﻿{% extends "base.html" %}
+{% block content %}
+    {% load static %}
+    <div class="group-data-[sidebar-size=lg]:ltr:lg:ml-vertical-menu group-data-[sidebar-size=lg]:rtl:lg:mr-vertical-menu group-data-[sidebar-size=md]:ltr:ml-vertical-menu-md group-data-[sidebar-size=md]:rtl:mr-vertical-menu-md group-data-[sidebar-size=sm]:ltr:lg:ml-vertical-menu-sm group-data-[sidebar-size=sm]:lg:rtl:mr-vertical-menu-sm pt-[calc(theme('spacing.header')_*_1)] pb-[calc(theme('spacing.header')_*_1)] px-6 group-data-[layout=horizontal]:!mx-auto group-data-[layout=horizontal]:max-w-screen-2xl  group-data-[layout=horizontal]:lg:pt-[calc(theme('spacing.header')_*_1.75)] h-screen">
+        <div class="container-fluid">
+
+            <div class="md:flex items-center justify-between pt-6 pb-5">
+                <div>
+                    <h6 class="mb-0 text-16 uppercase font-semibold dark:text-white">Chat</h6>
+                </div>
+                <div class="shrink-0">
+                    <ul class="mb-0 flex items-center gap-4 text-[13px] mt-2 md:mt-0">
+                        <li class="before:content-['/'] before:absolute ltr:before:-right-1 rtl:before:-left-2 before:text-gray-600 before:text-[9px] before:top-0 before:bottom-0 before:flex before:items-center relative pr-3 inline-block">
+                            <a href="#!" class="text-gray-800 dark:text-white">Agribusiness</a></li>
+                        <li class="text-gray-600 dark:text-zink-200">Chat</li>
+                    </ul>
+                </div>
+            </div>
+            <div class="">
+                <div class="min-w-[500px] lg:min-w-[380px]">
+                    <div class="mb-0">
+                        <div class="py-6">
+                            <div class="flex">
+                                {% if user.is_authenticated %}
+                                    <div class="self-center">
+                                        <img src="{{ user.pic.url }}" alt=""
+                                             class="w-8 h-8 rounded-full">
+                                    </div>
+                                    <div class="grow text-13">
+                                        <h6 class="mb-1 ml-4">
+                                            <a href="#" class="align-middle text-15">@{{ request.user.username }}
+                                            </a>
+                                            <p class="mt-1 mb-0 font-normal text-gray-600 text-13 dark:text-white">
+                                                <i class="mr-1 text-green-500 align-middle mdi mdi-circle text-13"></i>Active
+                                            </p>
+                                        </h6>
+                                    </div>
+                                {% else %}
+                                    <p>You are not logged in.</p>
+                                {% endif %}
+                                <div>
+                                    <div class="relative dropdown">
+                                        <button class="relative p-0 focus:outline-none text-gray-700 dark:text-zink-200 border-0 btn dropdown-toggle"
+                                                type="button" data-bs-toggle="dropdown" id="dropdownMenuButton1"
+                                                data-bs-toggle="dropdown">
+                                            <i class="text-xl bx bx-dots-horizontal-roundedbx bx-bell bx-tada"></i>
+                                            <div class="w-2 h-2 rounded-full absolute -top-1 -right-2 bg-red-500"></div>
+                                        </button>
+                                        <ul class="absolute right-0 left-auto top-auto z-50 hidden w-44 py-1.5 text-left list-none bg-white border border-transparent rounded shadow-4xl dropdown-menu bg-clip-padding dark:bg-zink-700 dark:border-zink-50 dark:text-zink-200"
+                                            aria-labelledby="dropdownMenuButton1">
+                                            <li>
+                                                <a class="block w-full px-6 py-1.5 text-sm font-normal text-gray-700 bg-transparent dropdown-item whitespace-nowrap hover:bg-gray-50  dark:text-zink-200 dark:hover:bg-zink-50 dark:hover:text-white !text-13"
+                                                   href="#">Action</a>
+                                            </li>
+                                            <li>
+                                                <a class="block w-full px-6 py-1.5 text-sm font-normal text-gray-700 bg-transparent dropdown-item whitespace-nowrap hover:bg-gray-50  dark:text-zink-200 dark:hover:bg-zink-50 dark:hover:text-white !text-13"
+                                                   href="#">Another Action</a>
+                                            </li>
+                                            <li>
+                                                <a class="block w-full px-6 py-1.5 text-sm font-normal text-gray-700 bg-transparent dropdown-item whitespace-nowrap hover:bg-gray-50  dark:text-zink-200 dark:hover:bg-zink-50 dark:hover:text-white !text-13"
+                                                   href="#">Something else here</a>
+                                            </li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                            <hr class="border-gray-300 dark:border-zink-50 my-6">
+                            <div class="pb-6 pt-0">
+                                <div class="relative">
+                                    <input type="text"
+                                           class="border focus:outline-none bg-white focus:border-blue-500 border-none py-2 px-10 w-full placeholder:text-gray-600 text-13 dark:text-white rounded-full dark:bg-zink-50 dark:border-transparent dark:placeholder:text-zink-200 "
+                                           placeholder="Search...">
+                                    <i class="bx bx-search-alt search-icon absolute left-3 top-1 text-lg text-gray-600"></i>
+                                </div>
+                            </div>
+
+                            <div class="nav-tabs tab-pill ">
+                                <div class="overflow-hidden">
+                                    <ul class="nav text-13 bg-white font-medium text-center text-gray-800 flex rounded-md overflow-hidden dark:bg-zink-50 dark:text-white">
+                                        <li class="w-full">
+                                            <a href="javascript:void(0);" data-tw-toggle="tab" data-tw-target="chat"
+                                               class="inline-block w-full p-2 active" aria-current="page">Chat</a>
+                                        </li>
+                                        <li class="w-full">
+                                            <a href="javascript:void(0);" data-tw-toggle="tab"
+                                               data-tw-target="groups" class="inline-block w-full p-2">Groups</a>
+                                        </li>
+                                        <li class="w-full">
+                                            <a href="javascript:void(0);" data-tw-toggle="tab"
+                                               data-tw-target="contacts"
+                                               class="inline-block w-full p-2">Contacts</a>
+                                        </li>
+                                    </ul>
+                                </div>
+                                <div class="tab-content">
+                                    <div class="w-full tab-pane block" id="chat">
+                                        <div class="pt-6 ">
+                                            <h5 class="text-sm text-gray-700 mb-4 dark:text-white">Recent</h5>
+                                            <ul class=" max-h-[calc(100vh_-_500px)]" data-simplebar="">
+                                                {% for friend in friends %}
+                                                <li class=" px-4 py-3.5 bg-white hover:bg-white transition-all duration-300 dark:bg-zink-50/50 dark:border-b dark:border-zink-50">
+                                                    <a href="{% url 'detail' friend.profile.id %}">
+                                                        <div class="flex items-start ">
+                                                            <div class="flex items-center relative ltr:mr-4 rtl:ml-4">
+                                                                <span class="flex-shrink-0 ltr:mr-4 rtl:ml-4 h-2 w-2 bg-gray-600 rounded-full"></span>
+                                                                <div class="text-center h-8 w-8 bg-blue-100 rounded-full  dark:bg-blue-500/30 overflow-hidden">
+                                                                    <img src="{{friend.profile.pic.url}}"
+                                                                         class="w-full h-full" alt="">
+                                                                </div>
+                                                            </div>
+                                                            <div class="flex-grow overflow-hidden">
+                                                                <h5 class="text-gray-600 text-[14px] dark:text-white">
+                                                                    {{ friend.profile.user }}</h5>
+                                                                <p class="mb-0 text-gray-600 text-13 dark:text-zink-200">
+                                                                    {{ friend.profile.name }}</p>
+                                                            </div>
+                                                            <div class="flex-shrink-0 ">
+                                                                <div class="text-[10px] text-gray-600  dark:text-zink-200">
+                                                                    05 min
+                                                                </div>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </li>
+                                                {% endfor %}
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="w-full tab-pane hidden" id="groups">
+                                        <div class="pt-6 ">
+                                            <h5 class="text-sm text-gray-700 mb-4 dark:text-white">Groups</h5>
+                                            <ul class=" whitespace-nowrap  max-h-[calc(65vh_-_90px)]"
+                                                data-simplebar="">
+                                                <li class=" px-4 py-3.5 border-y border-gray-300 hover:bg-white transition-all duration-300 dark:hover:bg-zink-50/50 dark:border-zink-50">
+                                                    <a href="#">
+                                                        <div class="flex items-start relative">
+                                                            <div class="flex gap-x-3 items-center">
+                                                                <div class="text-center h-8 w-8 bg-blue-100 rounded-full  dark:bg-blue-500/30">
+                                                                    <span class="leading-[2.4] text-blue-500 font-medium"> G </span>
+                                                                </div>
+                                                                <h5 class="text-13 text-gray-600 dark:text-zink-200">
+                                                                    Stacie Dube</h5>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </li>
+                                                <li class=" px-4 py-3.5  border-b border-gray-300 hover:bg-white transition-all duration-300 dark:hover:bg-zink-50/50 dark:border-zink-50">
+                                                    <a href="#">
+                                                        <div class="flex items-start relative">
+                                                            <div class="flex gap-x-3 items-center">
+                                                                <div class="text-center h-8 w-8 bg-blue-100 rounded-full  dark:bg-blue-500/30">
+                                                                    <span class="leading-[2.4] text-blue-500 font-medium"> R </span>
+                                                                </div>
+                                                                <h5 class="text-13 text-gray-600 dark:text-zink-200">
+                                                                    Reporting</h5>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </li>
+                                                <li class=" px-4 py-3.5  border-b border-gray-300 hover:bg-white transition-all duration-300 dark:hover:bg-zink-50/50 dark:border-zink-50">
+                                                    <a href="#">
+                                                        <div class="flex items-start relative">
+                                                            <div class="flex gap-x-3 items-center">
+                                                                <div class="text-center h-8 w-8 bg-blue-100 rounded-full  dark:bg-blue-500/30">
+                                                                    <span class="leading-[2.4] text-blue-500 font-medium"> M </span>
+                                                                </div>
+                                                                <h5 class="text-13 text-gray-600 dark:text-zink-200">
+                                                                    Meeting</h5>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </li>
+                                                <li class=" px-4 py-3.5  border-b border-gray-300 hover:bg-white transition-all duration-300 dark:hover:bg-zink-50/50 dark:border-zink-50">
+                                                    <a href="#">
+                                                        <div class="flex items-start relative">
+                                                            <div class="flex gap-x-3 items-center">
+                                                                <div class="text-center h-8 w-8 bg-blue-100 rounded-full  dark:bg-blue-500/30">
+                                                                    <span class="leading-[2.4] text-blue-500 font-medium"> G </span>
+                                                                </div>
+                                                                <h5 class="text-13 text-gray-600 dark:text-zink-200">
+                                                                    Stacie Dube</h5>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </li>
+                                                <li class=" px-4 py-3.5  border-b border-gray-300 hover:bg-white transition-all duration-300 dark:hover:bg-zink-50/50 dark:border-zink-50">
+                                                    <a href="#">
+                                                        <div class="flex items-start relative">
+                                                            <div class="flex gap-x-3 items-center">
+                                                                <div class="text-center h-8 w-8 bg-blue-100 rounded-full  dark:bg-blue-500/30">
+                                                                    <span class="leading-[2.4] text-blue-500 font-medium"> R </span>
+                                                                </div>
+                                                                <h5 class="text-13 text-gray-600 dark:text-zink-200">
+                                                                    Reporting</h5>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </li>
+                                                <li class=" px-4 py-3.5  border-b border-gray-300 hover:bg-white transition-all duration-300 dark:hover:bg-zink-50/50 dark:border-zink-50">
+                                                    <a href="#">
+                                                        <div class="flex items-start relative">
+                                                            <div class="flex gap-x-3 items-center">
+                                                                <div class="text-center h-8 w-8 bg-blue-100 rounded-full  dark:bg-blue-500/30">
+                                                                    <span class="leading-[2.4] text-blue-500 font-medium"> M </span>
+                                                                </div>
+                                                                <h5 class="text-13 text-gray-600 dark:text-zink-200">
+                                                                    Meeting</h5>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                    <div class="w-full tab-pane hidden" id="contacts">
+                                        <div class="pt-6 ">
+                                            <h5 class="text-sm text-gray-700 mb-4 dark:text-white">Contect</h5>
+                                            <ul class=" whitespace-nowrap  max-h-[calc(65vh_-_90px)]"
+                                                data-simplebar="">
+                                                <div class="mt-6">
+                                                    <a href="#"
+                                                       class="block pb-3 border-b border-gray-300 dark:border-zink-50">
+                                                        <div class="flex items-center">
+                                                            <div class="text-center h-8 w-8 bg-blue-100 rounded-full  dark:bg-blue-500/30">
+                                                                <span class="leading-[2.4] text-blue-500 font-medium"> A </span>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                    <ul>
+                                                        <li class="text-13 text-gray-600 dark:text-zink-200 py-3 px-4 border-b border-gray-300 dark:border-zink-50 hover:bg-white dark:hover:bg-zink-50/50 font-medium">
+                                                            Adam Miller
+                                                        </li>
+                                                        <li class="text-13 text-gray-600 dark:text-zink-200 py-3 px-4  dark:border-zink-50 hover:bg-white dark:hover:bg-zink-50/50 font-medium">
+                                                            Alfonso Fisher
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <div class="mt-6">
+                                                    <a href="#"
+                                                       class="block pb-3 border-b border-gray-300 dark:border-zink-50">
+                                                        <div class="flex items-center">
+                                                            <div class="text-center h-8 w-8 bg-blue-100 rounded-full  dark:bg-blue-500/30">
+                                                                <span class="leading-[2.4] text-blue-500 font-medium"> B </span>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                    <ul>
+                                                        <li class="text-13 text-gray-600 dark:text-zink-200 py-3 px-4 dark:border-zink-50 hover:bg-whitedark:hover:bg-zink-50/50 font-medium dark:hover:bg-zink-50/50">
+                                                            Bonnie Harney
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <div class="mt-6">
+                                                    <a href="#"
+                                                       class="block pb-3 border-b border-gray-300 dark:border-zink-50">
+                                                        <div class="flex items-center">
+                                                            <div class="text-center h-8 w-8 bg-blue-100 rounded-full dark:bg-blue-500/30">
+                                                                <span class="leading-[2.4] text-blue-500 font-medium"> C </span>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                    <ul>
+                                                        <li class="text-13 text-gray-600 dark:text-zink-200 py-3 px-4 border-b border-gray-300 dark:border-zink-50 hover:bg-white dark:hover:bg-zink-50/50 font-medium">
+                                                            Charles Brown
+                                                        </li>
+                                                        <li class="text-13 text-gray-600 dark:text-zink-200 py-3 px-4 border-b border-gray-300 dark:border-zink-50 hover:bg-white dark:hover:bg-zink-50/50 font-medium">
+                                                            Carmella Jones
+                                                        </li>
+                                                        <li class="text-13 text-gray-600 dark:text-zink-200 py-3 px-4 border-b border-gray-300 dark:border-zink-50 hover:bg-white dark:hover:bg-zink-50/50 font-medium">
+                                                            Cacie Dube
+                                                        </li>
+                                                        <li class="text-13 text-gray-600 dark:text-zink-200 py-3 px-4 border-b border-gray-300 dark:border-zink-50 hover:bg-white dark:hover:bg-zink-50/50 font-medium">
+                                                            Cacie Dccube
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                                <div class="mt-6">
+                                                    <a href="#"
+                                                       class="block pb-3 border-b border-gray-300 dark:border-zink-50">
+                                                        <div class="flex items-center">
+                                                            <div class="text-center h-8 w-8 bg-blue-100 rounded-full  dark:bg-blue-500/30">
+                                                                <span class="leading-[2.4] text-blue-500 font-medium"> P </span>
+                                                            </div>
+                                                        </div>
+                                                    </a>
+                                                    <ul>
+                                                        <li class="text-13 text-gray-600 dark:text-zink-200 py-3 px-4 border-b border-gray-300 dark:border-zink-50 hover:bg-white dark:hover:bg-zink-50/50 font-medium">
+                                                            Ptacie Dube
+                                                        </li>
+                                                        <li class="text-13 text-gray-600 dark:text-zink-200 py-3 px-4 border-b border-gray-300 dark:border-zink-50 hover:bg-white dark:hover:bg-zink-50/50 font-medium">
+                                                            Ptacie Dube
+                                                        </li>
+                                                        <li class="text-13 text-gray-600 dark:text-zink-200 py-3 px-4 border-b border-gray-300 dark:border-zink-50 hover:bg-white dark:hover:bg-zink-50/50 font-medium">
+                                                            Ptacie Dube
+                                                        </li>
+                                                        <li class="text-13 text-gray-600 dark:text-zink-200 py-3 px-4 border-b border-gray-300 dark:border-zink-50 hover:bg-white dark:hover:bg-zink-50/50 font-medium">
+                                                            Ptacie Dube
+                                                        </li>
+                                                    </ul>
+                                                </div>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+        <!-- container-fluid -->
+    </div>
+    <!-- End Page-content -->
+
+
+
+{% endblock %}
